@@ -11,7 +11,10 @@
  *                      Kannya Leal <kannyal@hotmail.com>
  */
 #include "FuzzyComposition.h"
+
 #include <math.h>
+
+using namespace eFLL;
 
 // CONTRUCTORS
 FuzzyComposition::FuzzyComposition()

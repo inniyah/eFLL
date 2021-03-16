@@ -12,6 +12,8 @@
  */
 #include "Fuzzy.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 Fuzzy::Fuzzy()
 {

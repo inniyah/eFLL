@@ -16,6 +16,8 @@
 // IMPORTING NECESSARY LIBRARIES
 #include <stdlib.h>
 
+namespace eFLL {
+
 // CONSTANTS
 #define EPS 1.0E-3
 
@@ -52,4 +54,7 @@ private:
   bool rebuild(pointsArray *aSegmentBegin, pointsArray *aSegmentEnd, pointsArray *bSegmentBegin, pointsArray *bSegmentEnd);
   bool rmvPoint(pointsArray *point);
 };
+
+} // namespace eFLL
+
 #endif

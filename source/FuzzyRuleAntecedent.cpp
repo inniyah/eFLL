@@ -12,6 +12,8 @@
  */
 #include "FuzzyRuleAntecedent.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 FuzzyRuleAntecedent::FuzzyRuleAntecedent()
 {

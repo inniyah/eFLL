@@ -12,6 +12,8 @@
  */
 #include "FuzzySet.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 FuzzySet::FuzzySet()
 {

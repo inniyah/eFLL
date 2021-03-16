@@ -17,6 +17,8 @@
 #include "FuzzyRuleAntecedent.h"
 #include "FuzzyRuleConsequent.h"
 
+namespace eFLL {
+
 class FuzzyRule
 {
 public:
@@ -35,4 +37,7 @@ private:
   FuzzyRuleAntecedent *fuzzyRuleAntecedent;
   FuzzyRuleConsequent *fuzzyRuleConsequent;
 };
+
+} // namespace eFLL
+
 #endif

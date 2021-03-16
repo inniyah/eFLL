@@ -12,6 +12,8 @@
  */
 #include "FuzzyRule.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 FuzzyRule::FuzzyRule()
 {

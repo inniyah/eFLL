@@ -12,6 +12,8 @@
  */
 #include "FuzzyIO.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 FuzzyIO::FuzzyIO()
 {

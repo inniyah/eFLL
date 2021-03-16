@@ -16,6 +16,8 @@
 // IMPORTING NECESSARY LIBRARIES
 #include "FuzzyIO.h"
 
+namespace eFLL {
+
 class FuzzyInput : public FuzzyIO
 {
 public:
@@ -27,4 +29,7 @@ public:
   // PUBLIC METHODS
   bool calculateFuzzySetPertinences();
 };
+
+} // namespace eFLL
+
 #endif
