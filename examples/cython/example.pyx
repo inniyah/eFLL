@@ -25,9 +25,9 @@ cdef class cFuzzySet:
             deref(self.thisptr).getPointC(),
             deref(self.thisptr).getPointD()
         )
-    def calculatePertinence(self, crispValue):
+    def calculatePertinence(self, float crispValue):
         return deref(self.thisptr).calculatePertinence(crispValue)
-    def setPertinence(self, pertinence):
+    def setPertinence(self, float pertinence):
         deref(self.thisptr).setPertinence(pertinence)
     def getPertinence(self):
         return deref(self.thisptr).getPertinence()
@@ -42,9 +42,9 @@ cdef class cFuzzyComposition:
         if(self.thisptr):
             del self.thisptr
             self.thisptr = NULL
-    def addPoint(self, point, pertinence):
+    def addPoint(self, float point, float pertinence):
         return deref(self.thisptr).addPoint(point, pertinence)
-    def checkPoint(self, point, pertinence):
+    def checkPoint(self, float point, float pertinence):
         return deref(self.thisptr).checkPoint(point, pertinence)
     def build(self):
         return deref(self.thisptr).build()
@@ -54,3 +54,60 @@ cdef class cFuzzyComposition:
         return deref(self.thisptr).empty()
     def countPoints(self):
         return deref(self.thisptr).countPoints()
+
+cdef class cFuzzyRuleAntecedent:
+    cdef Fuzzy.FuzzyRuleAntecedent * thisptr
+    def __cinit__(self):
+        self.thisptr = new Fuzzy.FuzzyRuleAntecedent()
+    def __dealloc__(self):
+        if(self.thisptr):
+            del self.thisptr
+            self.thisptr = NULL
+    def joinSingle(self, cFuzzySet fuzzySet):
+        return deref(self.thisptr).joinSingle(fuzzySet.thisptr)
+    def joinWithAND(self, cFuzzySet fuzzySet1, cFuzzySet fuzzySet2):
+        return deref(self.thisptr).joinWithAND(fuzzySet1.thisptr, fuzzySet2.thisptr)
+    def joinWithOR(self, cFuzzySet fuzzySet1, cFuzzySet fuzzySet2):
+        return deref(self.thisptr).joinWithOR(fuzzySet1.thisptr, fuzzySet2.thisptr)
+    def joinWithAND(self, cFuzzySet fuzzySet, cFuzzyRuleAntecedent fuzzyRuleAntecedent):
+        return deref(self.thisptr).joinWithAND(fuzzySet.thisptr, fuzzyRuleAntecedent.thisptr)
+    def joinWithAND(self, cFuzzyRuleAntecedent fuzzyRuleAntecedent, cFuzzySet fuzzySet):
+        return deref(self.thisptr).joinWithAND(fuzzyRuleAntecedent.thisptr, fuzzySet.thisptr)
+    def joinWithOR(self, cFuzzySet fuzzySet, cFuzzyRuleAntecedent fuzzyRuleAntecedent):
+        return deref(self.thisptr).joinWithOR(fuzzySet.thisptr, fuzzyRuleAntecedent.thisptr)
+    def joinWithOR(self, cFuzzyRuleAntecedent fuzzyRuleAntecedent, cFuzzySet fuzzySet):
+        return deref(self.thisptr).joinWithOR(fuzzyRuleAntecedent.thisptr, fuzzySet.thisptr)
+    def joinWithAND(self, cFuzzyRuleAntecedent fuzzyRuleAntecedent1, cFuzzyRuleAntecedent fuzzyRuleAntecedent2):
+        return deref(self.thisptr).joinWithAND(fuzzyRuleAntecedent1.thisptr, fuzzyRuleAntecedent2.thisptr)
+    def joinWithOR(self, cFuzzyRuleAntecedent fuzzyRuleAntecedent1, cFuzzyRuleAntecedent fuzzyRuleAntecedent2):
+        return deref(self.thisptr).joinWithOR(fuzzyRuleAntecedent1.thisptr, fuzzyRuleAntecedent2.thisptr)
+
+cdef class cFuzzyRuleConsequent:
+    cdef Fuzzy.FuzzyRuleConsequent * thisptr
+    def __cinit__(self):
+        self.thisptr = new Fuzzy.FuzzyRuleConsequent()
+    def __dealloc__(self):
+        if(self.thisptr):
+            del self.thisptr
+            self.thisptr = NULL
+    def addOutput(self, cFuzzySet fuzzySet):
+        return deref(self.thisptr).addOutput(fuzzySet.thisptr)
+    def evaluate(self, float power):
+        return deref(self.thisptr).evaluate(power)
+
+cdef class cFuzzyRule:
+    cdef Fuzzy.FuzzyRule * thisptr
+    def __cinit__(self):
+        self.thisptr = new Fuzzy.FuzzyRule()
+    def __cinit__(self, int index, cFuzzyRuleAntecedent fuzzyRuleAntecedent, cFuzzyRuleConsequent fuzzyRuleConsequent):
+        self.thisptr = new Fuzzy.FuzzyRule(index, fuzzyRuleAntecedent.thisptr, fuzzyRuleConsequent.thisptr)
+    def __dealloc__(self):
+        if(self.thisptr):
+            del self.thisptr
+            self.thisptr = NULL
+    def getIndex(self):
+        return deref(self.thisptr).getIndex()
+    def evaluateExpression(self):
+        return deref(self.thisptr).evaluateExpression()
+    def isFired(self):
+        return deref(self.thisptr).isFired()
