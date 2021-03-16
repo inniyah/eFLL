@@ -37,7 +37,7 @@ cdef class cFuzzySet:
 cdef class cFuzzyComposition:
     cdef Fuzzy.FuzzyComposition * thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzyComposition()
+        self.thisptr = NULL
     def __dealloc__(self):
         if(self.thisptr):
             del self.thisptr
@@ -111,3 +111,60 @@ cdef class cFuzzyRule:
         return deref(self.thisptr).evaluateExpression()
     def isFired(self):
         return deref(self.thisptr).isFired()
+
+cdef class cFuzzyInput:
+    cdef Fuzzy.FuzzyInput * thisptr
+    def __cinit__(self):
+        self.thisptr = new Fuzzy.FuzzyInput()
+    def __cinit__(self, int index):
+        self.thisptr = new Fuzzy.FuzzyInput(index)
+    def __dealloc__(self):
+        if(self.thisptr):
+            del self.thisptr
+            self.thisptr = NULL
+    def calculateFuzzySetPertinences(self):
+        return deref(self.thisptr).calculateFuzzySetPertinences()
+
+cdef class cFuzzyOutput:
+    cdef Fuzzy.FuzzyOutput * thisptr
+    def __cinit__(self):
+        self.thisptr = new Fuzzy.FuzzyOutput()
+    def __cinit__(self, int index):
+        self.thisptr = new Fuzzy.FuzzyOutput(index)
+    def __dealloc__(self):
+        if(self.thisptr):
+            del self.thisptr
+            self.thisptr = NULL
+    def truncate(self):
+        return deref(self.thisptr).truncate()
+    def getCrispOutput(self):
+        return deref(self.thisptr).getCrispOutput()
+    def order(self):
+        return deref(self.thisptr).order()
+    def getFuzzyComposition(self):
+        fuzzyComposition = cFuzzyComposition()
+        fuzzyComposition.thisptr = deref(self.thisptr).getFuzzyComposition()
+        return fuzzyComposition
+
+cdef class cFuzzy:
+    cdef Fuzzy.Fuzzy * thisptr
+    def __cinit__(self):
+        self.thisptr = new Fuzzy.Fuzzy()
+    def __dealloc__(self):
+        if(self.thisptr):
+            del self.thisptr
+            self.thisptr = NULL
+    def addFuzzyInput(self, cFuzzyInput fuzzyInput):
+        return deref(self.thisptr).addFuzzyInput(fuzzyInput.thisptr)
+    def addFuzzyOutput(self, cFuzzyOutput fuzzyOutput):
+        return deref(self.thisptr).addFuzzyOutput(fuzzyOutput.thisptr)
+    def addFuzzyRule(self, cFuzzyRule fuzzyRule):
+        return deref(self.thisptr).addFuzzyRule(fuzzyRule.thisptr)
+    def setInput(self, int fuzzyInputIndex, float crispValue):
+        return deref(self.thisptr).setInput(fuzzyInputIndex, crispValue)
+    def fuzzify(self):
+        return deref(self.thisptr).fuzzify()
+    def isFiredRule(self, int fuzzyRuleIndex):
+        return deref(self.thisptr).isFiredRule(fuzzyRuleIndex)
+    def defuzzify(self, int fuzzyOutputIndex):
+        return deref(self.thisptr).defuzzify(fuzzyOutputIndex)
