@@ -15,7 +15,10 @@
 
 // IMPORTING NECESSARY LIBRARIES
 #include <stdlib.h>
+
 #include "FuzzySet.h"
+
+namespace eFLL {
 
 // Array struct for fuzzySet (for Output) objects
 struct fuzzySetOutputArray
@@ -42,4 +45,7 @@ private:
   // PRIVATE METHODS
   void cleanFuzzySets(fuzzySetOutputArray *aux);
 };
+
+} // namespace eFLL
+
 #endif

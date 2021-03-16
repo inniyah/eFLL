@@ -12,6 +12,8 @@
  */
 #include "FuzzyInput.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 FuzzyInput::FuzzyInput() : FuzzyIO()
 {

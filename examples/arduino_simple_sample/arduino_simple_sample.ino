@@ -1,5 +1,7 @@
 #include <Fuzzy.h>
 
+using namespace eFLL;
+
 // Instantiating a Fuzzy object
 Fuzzy *fuzzy = new Fuzzy();
 

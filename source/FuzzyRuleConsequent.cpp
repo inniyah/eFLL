@@ -12,6 +12,8 @@
  */
 #include "FuzzyRuleConsequent.h"
 
+using namespace eFLL;
+
 // CONTRUCTORS
 FuzzyRuleConsequent::FuzzyRuleConsequent()
 {

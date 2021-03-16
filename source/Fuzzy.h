@@ -15,9 +15,12 @@
 
 // IMPORTING NECESSARY LIBRARIES
 #include <inttypes.h>
+
 #include "FuzzyInput.h"
 #include "FuzzyOutput.h"
 #include "FuzzyRule.h"
+
+namespace eFLL {
 
 // Array struct for FuzzyInput objects
 struct fuzzyInputArray
@@ -73,4 +76,7 @@ private:
   void cleanFuzzyOutputs(fuzzyOutputArray *aux);
   void cleanFuzzyRules(fuzzyRuleArray *aux);
 };
+
+} // namespace eFLL
+
 #endif

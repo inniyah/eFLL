@@ -15,7 +15,10 @@
 
 // IMPORTING NECESSARY LIBRARIES
 #include <stdlib.h>
+
 #include "FuzzySet.h"
+
+namespace eFLL {
 
 // CONSTANTS
 // possible logic operators
@@ -53,4 +56,7 @@ private:
   FuzzyRuleAntecedent *fuzzyRuleAntecedent1;
   FuzzyRuleAntecedent *fuzzyRuleAntecedent2;
 };
+
+} // namespace eFLL
+
 #endif

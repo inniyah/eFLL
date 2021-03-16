@@ -13,6 +13,8 @@
 #ifndef FUZZYSET_H
 #define FUZZYSET_H
 
+namespace eFLL {
+
 class FuzzySet
 {
 public:
@@ -37,4 +39,7 @@ private:
   float d;
   float pertinence;
 };
+
+} // namespace eFLL
+
 #endif

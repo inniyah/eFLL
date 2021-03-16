@@ -3,6 +3,7 @@
 #include "../../source/Fuzzy.h"
 
 using namespace std;
+using namespace eFLL;
 
 int random(int from, int to)
 {

@@ -15,7 +15,10 @@
 
 // IMPORTING NECESSARY LIBRARIES
 #include <stdlib.h>
+
 #include "FuzzySet.h"
+
+namespace eFLL {
 
 // Array struct for FuzzySet objects
 struct fuzzySetArray
@@ -48,4 +51,7 @@ protected:
   // PROTECTED METHODS
   void cleanFuzzySets(fuzzySetArray *aux);
 };
+
+} // namespace eFLL
+
 #endif

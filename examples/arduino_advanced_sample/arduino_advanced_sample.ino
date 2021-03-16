@@ -1,5 +1,7 @@
 #include <Fuzzy.h>
 
+using namespace eFLL;
+
 // For scope, instantiate all objects you will need to access in loop()
 // It may be just one Fuzzy, but for demonstration, this sample will print
 // all FuzzySet pertinence
