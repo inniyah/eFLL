@@ -25,10 +25,10 @@ PKG_CONFIG_LIBS=`pkg-config --libs-only-l $(PACKAGES)`
 endif
 
 CFLAGS= \
-	-Wall \
 	-fwrapv \
 	-fstack-protector-strong \
 	-Wall \
+	-Wno-unused-function \
 	-Wformat \
 	-Werror=format-security \
 	-Wdate-time \
