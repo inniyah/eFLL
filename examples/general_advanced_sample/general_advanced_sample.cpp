@@ -1,6 +1,6 @@
 #include <iostream>
 #include <time.h>
-#include "../../Fuzzy.h"
+#include "../../source/Fuzzy.h"
 
 using namespace std;
 
