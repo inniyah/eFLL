@@ -61,16 +61,17 @@ DEFS= \
 	-DNDEBUG
 
 INCS= \
-	-Isrc/tmxlite
+	-Isource
 
 CYINCS= \
-	-Isrc/cython
+	-Icython
 
 LIBS=
 
 all: general_simple_sample.bin general_advanced_sample.bin efll.so
 
 PYX_SRCS= \
+	examples/cython/example.pyx
 
 C_SRCS= \
 
