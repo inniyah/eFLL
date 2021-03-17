@@ -115,6 +115,24 @@ efll.so: $(OBJS)
 %.cpp: %.pyx
 	$(CYTHON) $(CYFLAGS) $(CYINCS) -o $@ $<
 
+TEST_CFLAGS=`pkg-config --cflags gtest`
+TEST_LDFLAGS=`pkg-config --libs-only-L gtest`
+TEST_LIBS=`pkg-config --libs-only-l gtest`
+
+tests/GeneralTest.bin: tests/GeneralTest.cpp $(OBJS)
+	$(CXX) $(CPPSTD) $(OPTS) \
+		$(DEFS) $(INCS) $(CFLAGS) $(PKG_CONFIG_CFLAGS) $(TEST_CFLAGS) \
+		$(LDFLAGS) $(PKG_CONFIG_LDFLAGS) $(TEST_LDFLAGS) \
+		-o $@ $+ $(LIBS) $(TEST_LIBS) $(PKG_CONFIG_LIBS)
+
+tests/FuzzyTest.bin: tests/FuzzyTest.cpp $(OBJS)
+	$(CXX) $(CPPSTD) $(OPTS) \
+		$(DEFS) $(INCS) $(CFLAGS) $(PKG_CONFIG_CFLAGS) $(TEST_CFLAGS) \
+		$(LDFLAGS) $(PKG_CONFIG_LDFLAGS) $(TEST_LDFLAGS) \
+		-o $@ $+ $(LIBS) $(TEST_LIBS) $(PKG_CONFIG_LIBS)
+
+tests: tests/GeneralTest.bin tests/FuzzyTest.bin
+
 clean:
 	$(RM) $(OBJS)
 	$(RM) $(subst .pyx,.cpp,$(PYX_SRCS))
