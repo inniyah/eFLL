@@ -10,12 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYRULECONSEQUENT_H
-#define FUZZYRULECONSEQUENT_H
 
-// IMPORTING NECESSARY LIBRARIES
-#include <stdlib.h>
+#pragma once
 
+#ifndef FUZZYRULECONSEQUENT_H_69CC4D56_86FD_11EB_BBA5_3FB42709DFAC
+#define FUZZYRULECONSEQUENT_H_69CC4D56_86FD_11EB_BBA5_3FB42709DFAC
+
+#include "FuzzyCommon.h"
 #include "FuzzySet.h"
 
 namespace eFLL {
@@ -30,6 +31,9 @@ struct fuzzySetOutputArray
 class FuzzyRuleConsequent
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzyRuleConsequent>;
+  using WeakPointer = std::weak_ptr<FuzzyRuleConsequent>;
+
   // CONTRUCTORS
   FuzzyRuleConsequent();
   // DESTRUCTOR
@@ -48,4 +52,4 @@ private:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYRULECONSEQUENT_H_69CC4D56_86FD_11EB_BBA5_3FB42709DFAC

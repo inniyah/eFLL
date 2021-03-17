@@ -10,10 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYOUTPUT_H
-#define FUZZYOUTPUT_H
 
-// IMPORTING NECESSARY LIBRARIES
+#pragma once
+
+#ifndef FUZZYOUTPUT_H_69CC4EE6_86FD_11EB_BBA9_9F51BE0723A1
+#define FUZZYOUTPUT_H_69CC4EE6_86FD_11EB_BBA9_9F51BE0723A1
+
+#include "FuzzyCommon.h"
 #include "FuzzyIO.h"
 #include "FuzzyComposition.h"
 
@@ -22,6 +25,9 @@ namespace eFLL {
 class FuzzyOutput : public FuzzyIO
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzyOutput>;
+  using WeakPointer = std::weak_ptr<FuzzyOutput>;
+
   // CONTRUCTORS
   FuzzyOutput();
   FuzzyOutput(int index);
@@ -44,4 +50,4 @@ private:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYOUTPUT_H_69CC4EE6_86FD_11EB_BBA9_9F51BE0723A1

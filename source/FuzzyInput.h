@@ -10,10 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYINPUT_H
-#define FUZZYINPUT_H
 
-// IMPORTING NECESSARY LIBRARIES
+#pragma once
+
+#ifndef FUZZYINPUT_H_69CC4E96_86FD_11EB_BBA8_CB96D905530C
+#define FUZZYINPUT_H_69CC4E96_86FD_11EB_BBA8_CB96D905530C
+
+#include "FuzzyCommon.h"
 #include "FuzzyIO.h"
 
 namespace eFLL {
@@ -21,6 +24,9 @@ namespace eFLL {
 class FuzzyInput : public FuzzyIO
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzyInput>;
+  using WeakPointer = std::weak_ptr<FuzzyInput>;
+
   // CONTRUCTORS
   FuzzyInput();
   FuzzyInput(int index);
@@ -32,4 +38,4 @@ public:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYINPUT_H_69CC4E96_86FD_11EB_BBA8_CB96D905530C
