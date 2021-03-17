@@ -30,7 +30,7 @@ public:
 
   // CONTRUCTORS
   FuzzyRule();
-  FuzzyRule(int index, FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzyRuleConsequent *fuzzyRuleConsequent);
+  FuzzyRule(int index, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzyRuleConsequent::SharedPointer &fuzzyRuleConsequent);
   // PUBLIC METHODS
   int getIndex();
   bool evaluateExpression();
@@ -40,8 +40,8 @@ private:
   // PRIVATE VARIABLES
   int index;
   bool fired;
-  FuzzyRuleAntecedent *fuzzyRuleAntecedent;
-  FuzzyRuleConsequent *fuzzyRuleConsequent;
+  FuzzyRuleAntecedent::SharedPointer fuzzyRuleAntecedent;
+  FuzzyRuleConsequent::SharedPointer fuzzyRuleConsequent;
 };
 
 } // namespace eFLL

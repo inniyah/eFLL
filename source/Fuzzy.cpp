@@ -10,6 +10,7 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
+
 #include "Fuzzy.h"
 
 using namespace eFLL;
@@ -37,7 +38,7 @@ Fuzzy::~Fuzzy()
 // PUBLIC METHODS
 
 // Method to include a new FuzzyInput into Fuzzy
-bool Fuzzy::addFuzzyInput(FuzzyInput *fuzzyInput)
+bool Fuzzy::addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput)
 {
     // auxiliary variable to handle the operation
     fuzzyInputArray *newOne;
@@ -75,7 +76,7 @@ bool Fuzzy::addFuzzyInput(FuzzyInput *fuzzyInput)
 }
 
 // Method to include a new FuzzyOutput into Fuzzy
-bool Fuzzy::addFuzzyOutput(FuzzyOutput *fuzzyOutput)
+bool Fuzzy::addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput)
 {
     // auxiliary variable to handle the operation
     fuzzyOutputArray *newOne;
@@ -115,7 +116,7 @@ bool Fuzzy::addFuzzyOutput(FuzzyOutput *fuzzyOutput)
 }
 
 // Method to include a new FuzzyRule into Fuzzy
-bool Fuzzy::addFuzzyRule(FuzzyRule *fuzzyRule)
+bool Fuzzy::addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule)
 {
     // auxiliary variable to handle the operation
     fuzzyRuleArray *newOne;

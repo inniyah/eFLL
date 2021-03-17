@@ -10,6 +10,7 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
+
 #include "FuzzyRuleConsequent.h"
 
 using namespace eFLL;
@@ -29,7 +30,7 @@ FuzzyRuleConsequent::~FuzzyRuleConsequent()
 // PUBLIC METHODS
 
 // Method to include a new FuzzySet (for Output) into FuzzyRuleConsequent
-bool FuzzyRuleConsequent::addOutput(FuzzySet *fuzzySet)
+bool FuzzyRuleConsequent::addOutput(FuzzySet::SharedPointer &fuzzySet)
 {
     // auxiliary variable to handle the operation
     fuzzySetOutputArray *newOne;

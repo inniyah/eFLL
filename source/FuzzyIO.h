@@ -24,7 +24,7 @@ namespace eFLL {
 // Array struct for FuzzySet objects
 struct fuzzySetArray
 {
-  FuzzySet *fuzzySet;
+  FuzzySet::SharedPointer fuzzySet;
   fuzzySetArray *next;
 };
 
@@ -43,7 +43,7 @@ public:
   int getIndex();
   void setCrispInput(float crispInput);
   float getCrispInput();
-  bool addFuzzySet(FuzzySet *fuzzySet);
+  bool addFuzzySet(FuzzySet::SharedPointer &fuzzySet);
   void resetFuzzySets();
 
 protected:

@@ -1,15 +1,15 @@
 cimport eFLL.Fuzzy as Fuzzy
 
+from libcpp cimport bool
+from libcpp.memory cimport shared_ptr, weak_ptr
 from cython.operator cimport dereference as deref
 
 cdef class cFuzzySet:
-    cdef Fuzzy.FuzzySet * thisptr
+    cdef shared_ptr[Fuzzy.FuzzySet] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzySet()
+        self.thisptr = shared_ptr[Fuzzy.FuzzySet](new Fuzzy.FuzzySet())
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def getPointA(self):
         return deref(self.thisptr).getPointA()
     def getPointB(self):
@@ -35,13 +35,11 @@ cdef class cFuzzySet:
         deref(self.thisptr).reset()
 
 cdef class cFuzzyComposition:
-    cdef Fuzzy.FuzzyComposition * thisptr
+    cdef shared_ptr[Fuzzy.FuzzyComposition] thisptr
     def __cinit__(self):
-        self.thisptr = NULL
+        pass
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def addPoint(self, float point, float pertinence):
         return deref(self.thisptr).addPoint(point, pertinence)
     def checkPoint(self, float point, float pertinence):
@@ -56,13 +54,11 @@ cdef class cFuzzyComposition:
         return deref(self.thisptr).countPoints()
 
 cdef class cFuzzyRuleAntecedent:
-    cdef Fuzzy.FuzzyRuleAntecedent * thisptr
+    cdef shared_ptr[Fuzzy.FuzzyRuleAntecedent] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzyRuleAntecedent()
+        self.thisptr = shared_ptr[Fuzzy.FuzzyRuleAntecedent](new Fuzzy.FuzzyRuleAntecedent())
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def joinSingle(self, cFuzzySet fuzzySet):
         return deref(self.thisptr).joinSingle(fuzzySet.thisptr)
     def joinWithAND(self, cFuzzySet fuzzySet1, cFuzzySet fuzzySet2):
@@ -83,28 +79,24 @@ cdef class cFuzzyRuleAntecedent:
         return deref(self.thisptr).joinWithOR(fuzzyRuleAntecedent1.thisptr, fuzzyRuleAntecedent2.thisptr)
 
 cdef class cFuzzyRuleConsequent:
-    cdef Fuzzy.FuzzyRuleConsequent * thisptr
+    cdef shared_ptr[Fuzzy.FuzzyRuleConsequent] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzyRuleConsequent()
+        self.thisptr = shared_ptr[Fuzzy.FuzzyRuleConsequent](new Fuzzy.FuzzyRuleConsequent())
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def addOutput(self, cFuzzySet fuzzySet):
         return deref(self.thisptr).addOutput(fuzzySet.thisptr)
     def evaluate(self, float power):
         return deref(self.thisptr).evaluate(power)
 
 cdef class cFuzzyRule:
-    cdef Fuzzy.FuzzyRule * thisptr
+    cdef shared_ptr[Fuzzy.FuzzyRule] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzyRule()
+        self.thisptr = shared_ptr[Fuzzy.FuzzyRule](new Fuzzy.FuzzyRule())
     def __cinit__(self, int index, cFuzzyRuleAntecedent fuzzyRuleAntecedent, cFuzzyRuleConsequent fuzzyRuleConsequent):
-        self.thisptr = new Fuzzy.FuzzyRule(index, fuzzyRuleAntecedent.thisptr, fuzzyRuleConsequent.thisptr)
+        self.thisptr = shared_ptr[Fuzzy.FuzzyRule](new Fuzzy.FuzzyRule(index, fuzzyRuleAntecedent.thisptr, fuzzyRuleConsequent.thisptr))
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def getIndex(self):
         return deref(self.thisptr).getIndex()
     def evaluateExpression(self):
@@ -113,28 +105,24 @@ cdef class cFuzzyRule:
         return deref(self.thisptr).isFired()
 
 cdef class cFuzzyInput:
-    cdef Fuzzy.FuzzyInput * thisptr
+    cdef shared_ptr[Fuzzy.FuzzyInput] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzyInput()
+        self.thisptr = shared_ptr[Fuzzy.FuzzyInput](new Fuzzy.FuzzyInput())
     def __cinit__(self, int index):
-        self.thisptr = new Fuzzy.FuzzyInput(index)
+        self.thisptr = shared_ptr[Fuzzy.FuzzyInput](new Fuzzy.FuzzyInput(index))
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def calculateFuzzySetPertinences(self):
         return deref(self.thisptr).calculateFuzzySetPertinences()
 
 cdef class cFuzzyOutput:
-    cdef Fuzzy.FuzzyOutput * thisptr
+    cdef shared_ptr[Fuzzy.FuzzyOutput] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.FuzzyOutput()
+        self.thisptr = shared_ptr[Fuzzy.FuzzyOutput](new Fuzzy.FuzzyOutput())
     def __cinit__(self, int index):
-        self.thisptr = new Fuzzy.FuzzyOutput(index)
+        self.thisptr = shared_ptr[Fuzzy.FuzzyOutput](new Fuzzy.FuzzyOutput(index))
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def truncate(self):
         return deref(self.thisptr).truncate()
     def getCrispOutput(self):
@@ -147,13 +135,11 @@ cdef class cFuzzyOutput:
         return fuzzyComposition
 
 cdef class cFuzzy:
-    cdef Fuzzy.Fuzzy * thisptr
+    cdef shared_ptr[Fuzzy.Fuzzy] thisptr
     def __cinit__(self):
-        self.thisptr = new Fuzzy.Fuzzy()
+        self.thisptr = shared_ptr[Fuzzy.Fuzzy](new Fuzzy.Fuzzy())
     def __dealloc__(self):
-        if(self.thisptr):
-            del self.thisptr
-            self.thisptr = NULL
+        self.thisptr.reset()
     def addFuzzyInput(self, cFuzzyInput fuzzyInput):
         return deref(self.thisptr).addFuzzyInput(fuzzyInput.thisptr)
     def addFuzzyOutput(self, cFuzzyOutput fuzzyOutput):

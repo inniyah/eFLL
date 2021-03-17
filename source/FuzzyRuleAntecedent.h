@@ -40,25 +40,25 @@ public:
   // CONTRUCTORS
   FuzzyRuleAntecedent();
   // PUBLIC METHODS
-  bool joinSingle(FuzzySet *fuzzySet);
-  bool joinWithAND(FuzzySet *fuzzySet1, FuzzySet *fuzzySet2);
-  bool joinWithOR(FuzzySet *fuzzySet1, FuzzySet *fuzzySet2);
-  bool joinWithAND(FuzzySet *fuzzySet, FuzzyRuleAntecedent *fuzzyRuleAntecedent);
-  bool joinWithAND(FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzySet *fuzzySet);
-  bool joinWithOR(FuzzySet *fuzzySet, FuzzyRuleAntecedent *fuzzyRuleAntecedent);
-  bool joinWithOR(FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzySet *fuzzySet);
-  bool joinWithAND(FuzzyRuleAntecedent *fuzzyRuleAntecedent1, FuzzyRuleAntecedent *fuzzyRuleAntecedent2);
-  bool joinWithOR(FuzzyRuleAntecedent *fuzzyRuleAntecedent1, FuzzyRuleAntecedent *fuzzyRuleAntecedent2);
+  bool joinSingle(FuzzySet::SharedPointer &fuzzySet);
+  bool joinWithAND(FuzzySet::SharedPointer &fuzzySet1, FuzzySet::SharedPointer &fuzzySet2);
+  bool joinWithOR(FuzzySet::SharedPointer &fuzzySet1, FuzzySet::SharedPointer &fuzzySet2);
+  bool joinWithAND(FuzzySet::SharedPointer &fuzzySet, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent);
+  bool joinWithAND(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzySet::SharedPointer &fuzzySet);
+  bool joinWithOR(FuzzySet::SharedPointer &fuzzySet, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent);
+  bool joinWithOR(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzySet::SharedPointer &fuzzySet);
+  bool joinWithAND(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent1, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent2);
+  bool joinWithOR(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent1, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent2);
   float evaluate();
 
 private:
   // PRIVATE VARIABLES
   int op;
   int mode;
-  FuzzySet *fuzzySet1;
-  FuzzySet *fuzzySet2;
-  FuzzyRuleAntecedent *fuzzyRuleAntecedent1;
-  FuzzyRuleAntecedent *fuzzyRuleAntecedent2;
+  FuzzySet::SharedPointer fuzzySet1;
+  FuzzySet::SharedPointer fuzzySet2;
+  FuzzyRuleAntecedent::SharedPointer fuzzyRuleAntecedent1;
+  FuzzyRuleAntecedent::SharedPointer fuzzyRuleAntecedent2;
 };
 
 } // namespace eFLL

@@ -10,6 +10,7 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
+
 #include "FuzzyOutput.h"
 
 using namespace eFLL;
@@ -18,13 +19,13 @@ using namespace eFLL;
 FuzzyOutput::FuzzyOutput() : FuzzyIO()
 {
     // instantiating a FuzzyComposition object
-    this->fuzzyComposition = new FuzzyComposition();
+    this->fuzzyComposition = std::make_shared<FuzzyComposition>();
 }
 
 FuzzyOutput::FuzzyOutput(int index) : FuzzyIO(index)
 {
     // instantiating a FuzzyComposition object
-    this->fuzzyComposition = new FuzzyComposition();
+    this->fuzzyComposition = std::make_shared<FuzzyComposition>();
 }
 
 // DESTRUCTOR
@@ -172,7 +173,7 @@ bool FuzzyOutput::order()
 }
 
 // Method to get the value (pointer) of fuzzyComposition
-FuzzyComposition *FuzzyOutput::getFuzzyComposition()
+FuzzyComposition::SharedPointer FuzzyOutput::getFuzzyComposition()
 {
     return this->fuzzyComposition;
 }
@@ -183,7 +184,7 @@ FuzzyComposition *FuzzyOutput::getFuzzyComposition()
 bool FuzzyOutput::swap(fuzzySetArray *fuzzySetA, fuzzySetArray *fuzzySetB)
 {
     // put the first into an auxiliary variable
-    FuzzySet *aux = fuzzySetA->fuzzySet;
+    auto aux = fuzzySetA->fuzzySet;
     // put the second into the first
     fuzzySetA->fuzzySet = fuzzySetB->fuzzySet;
     // put the auxiliary into the second

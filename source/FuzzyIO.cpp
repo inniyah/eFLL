@@ -10,6 +10,7 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
+
 #include "FuzzyIO.h"
 
 using namespace eFLL;
@@ -54,7 +55,7 @@ float FuzzyIO::getCrispInput()
 }
 
 // Method to include a new FuzzySet into FuzzyIO
-bool FuzzyIO::addFuzzySet(FuzzySet *fuzzySet)
+bool FuzzyIO::addFuzzySet(FuzzySet::SharedPointer &fuzzySet)
 {
     // auxiliary variable to handle the operation
     fuzzySetArray *newOne;

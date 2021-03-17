@@ -1,5 +1,7 @@
 #include <iostream>
+#include <memory>
 #include <time.h>
+
 #include "../../source/Fuzzy.h"
 
 using namespace std;
@@ -16,37 +18,37 @@ int main(int argc, char *argv[])
     srand((unsigned)time(0));
 
     // Instantiating a Fuzzy object
-    Fuzzy *fuzzy = new Fuzzy();
+    auto fuzzy = std::make_shared<Fuzzy>();
 
     // Instantiating a FuzzyInput object
-    FuzzyInput *distance = new FuzzyInput(1);
+    auto distance = std::make_shared<FuzzyInput>(1);
     // Instantiating a FuzzySet object
-    FuzzySet *small = new FuzzySet(0, 20, 20, 40);
+    auto small = std::make_shared<FuzzySet>(0, 20, 20, 40);
     // Including the FuzzySet into FuzzyInput
     distance->addFuzzySet(small);
     // Instantiating a FuzzySet object
-    FuzzySet *safe = new FuzzySet(30, 50, 50, 70);
+    auto safe = std::make_shared<FuzzySet>(30, 50, 50, 70);
     // Including the FuzzySet into FuzzyInput
     distance->addFuzzySet(safe);
     // Instantiating a FuzzySet object
-    FuzzySet *big = new FuzzySet(60, 80, 80, 80);
+    auto big = std::make_shared<FuzzySet>(60, 80, 80, 80);
     // Including the FuzzySet into FuzzyInput
     distance->addFuzzySet(big);
     // Including the FuzzyInput into Fuzzy
     fuzzy->addFuzzyInput(distance);
 
     // Instantiating a FuzzyOutput objects
-    FuzzyOutput *speed = new FuzzyOutput(1);
+    auto speed = std::make_shared<FuzzyOutput>(1);
     // Instantiating a FuzzySet object
-    FuzzySet *slow = new FuzzySet(0, 10, 10, 20);
+    auto slow = std::make_shared<FuzzySet>(0, 10, 10, 20);
     // Including the FuzzySet into FuzzyOutput
     speed->addFuzzySet(slow);
     // Instantiating a FuzzySet object
-    FuzzySet *average = new FuzzySet(10, 20, 30, 40);
+    auto average = std::make_shared<FuzzySet>(10, 20, 30, 40);
     // Including the FuzzySet into FuzzyOutput
     speed->addFuzzySet(average);
     // Instantiating a FuzzySet object
-    FuzzySet *fast = new FuzzySet(30, 40, 40, 50);
+    auto fast = std::make_shared<FuzzySet>(30, 40, 40, 50);
     // Including the FuzzySet into FuzzyOutput
     speed->addFuzzySet(fast);
     // Including the FuzzyOutput into Fuzzy
@@ -54,43 +56,43 @@ int main(int argc, char *argv[])
 
     // Building FuzzyRule "IF distance = small THEN speed = slow"
     // Instantiating a FuzzyRuleAntecedent objects
-    FuzzyRuleAntecedent *ifDistanceSmall = new FuzzyRuleAntecedent();
+    auto ifDistanceSmall = std::make_shared<FuzzyRuleAntecedent>();
     // Creating a FuzzyRuleAntecedent with just a single FuzzySet
     ifDistanceSmall->joinSingle(small);
     // Instantiating a FuzzyRuleConsequent objects
-    FuzzyRuleConsequent *thenSpeedSlow = new FuzzyRuleConsequent();
+    auto thenSpeedSlow = std::make_shared<FuzzyRuleConsequent>();
     // Including a FuzzySet to this FuzzyRuleConsequent
     thenSpeedSlow->addOutput(slow);
     // Instantiating a FuzzyRule objects
-    FuzzyRule *fuzzyRule01 = new FuzzyRule(1, ifDistanceSmall, thenSpeedSlow);
+    auto fuzzyRule01 = std::make_shared<FuzzyRule>(1, ifDistanceSmall, thenSpeedSlow);
     // Including the FuzzyRule into Fuzzy
     fuzzy->addFuzzyRule(fuzzyRule01);
 
     // Building FuzzyRule "IF distance = safe THEN speed = average"
     // Instantiating a FuzzyRuleAntecedent objects
-    FuzzyRuleAntecedent *ifDistanceSafe = new FuzzyRuleAntecedent();
+    auto ifDistanceSafe = std::make_shared<FuzzyRuleAntecedent>();
     // Creating a FuzzyRuleAntecedent with just a single FuzzySet
     ifDistanceSafe->joinSingle(safe);
     // Instantiating a FuzzyRuleConsequent objects
-    FuzzyRuleConsequent *thenSpeedAverage = new FuzzyRuleConsequent();
+    auto thenSpeedAverage = std::make_shared<FuzzyRuleConsequent>();
     // Including a FuzzySet to this FuzzyRuleConsequent
     thenSpeedAverage->addOutput(average);
     // Instantiating a FuzzyRule objects
-    FuzzyRule *fuzzyRule02 = new FuzzyRule(2, ifDistanceSafe, thenSpeedAverage);
+    auto fuzzyRule02 = std::make_shared<FuzzyRule>(2, ifDistanceSafe, thenSpeedAverage);
     // Including the FuzzyRule into Fuzzy
     fuzzy->addFuzzyRule(fuzzyRule02);
 
     // Building FuzzyRule "IF distance = big THEN speed = high"
     // Instantiating a FuzzyRuleAntecedent objects
-    FuzzyRuleAntecedent *ifDistanceBig = new FuzzyRuleAntecedent();
+    auto ifDistanceBig = std::make_shared<FuzzyRuleAntecedent>();
     // Creating a FuzzyRuleAntecedent with just a single FuzzySet
     ifDistanceBig->joinSingle(big);
     // Instantiating a FuzzyRuleConsequent objects
-    FuzzyRuleConsequent *thenSpeedFast = new FuzzyRuleConsequent();
+    auto thenSpeedFast = std::make_shared<FuzzyRuleConsequent>();
     // Including a FuzzySet to this FuzzyRuleConsequent
     thenSpeedFast->addOutput(fast);
     // Instantiating a FuzzyRule objects
-    FuzzyRule *fuzzyRule03 = new FuzzyRule(3, ifDistanceBig, thenSpeedFast);
+    auto fuzzyRule03 = std::make_shared<FuzzyRule>(3, ifDistanceBig, thenSpeedFast);
     // Including the FuzzyRule into Fuzzy
     fuzzy->addFuzzyRule(fuzzyRule03);
 
