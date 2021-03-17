@@ -37,11 +37,11 @@ public:
   bool truncate();
   float getCrispOutput();
   bool order();
-  FuzzyComposition *getFuzzyComposition();
+  FuzzyComposition::SharedPointer getFuzzyComposition();
 
 private:
   // PRIVATE VARIABLES
-  FuzzyComposition *fuzzyComposition;
+  FuzzyComposition::SharedPointer fuzzyComposition;
 
   // PRIVATE METHODS
   bool swap(fuzzySetArray *fuzzySetA, fuzzySetArray *fuzzySetB);

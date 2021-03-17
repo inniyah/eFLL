@@ -10,6 +10,7 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
+
 #include "FuzzyRuleAntecedent.h"
 
 using namespace eFLL;
@@ -29,7 +30,7 @@ FuzzyRuleAntecedent::FuzzyRuleAntecedent()
 // PUBLIC METHODS
 
 // Method to create a FuzzyRuleAntecedent with just one single FuzzySet
-bool FuzzyRuleAntecedent::joinSingle(FuzzySet *fuzzySet)
+bool FuzzyRuleAntecedent::joinSingle(FuzzySet::SharedPointer &fuzzySet)
 {
     // check if FuzzySet is not null
     if (fuzzySet != NULL)
@@ -43,7 +44,7 @@ bool FuzzyRuleAntecedent::joinSingle(FuzzySet *fuzzySet)
 }
 
 // Method to create a FuzzyRuleAntecedent with two FuzzySet, with AND
-bool FuzzyRuleAntecedent::joinWithAND(FuzzySet *fuzzySet1, FuzzySet *fuzzySet2)
+bool FuzzyRuleAntecedent::joinWithAND(FuzzySet::SharedPointer &fuzzySet1, FuzzySet::SharedPointer &fuzzySet2)
 {
     // check if two FuzzySet are valid
     if (fuzzySet1 != NULL && fuzzySet2 != NULL)
@@ -59,7 +60,7 @@ bool FuzzyRuleAntecedent::joinWithAND(FuzzySet *fuzzySet1, FuzzySet *fuzzySet2)
 }
 
 // Method to create a FuzzyRuleAntecedent with two FuzzySet, with OR
-bool FuzzyRuleAntecedent::joinWithOR(FuzzySet *fuzzySet1, FuzzySet *fuzzySet2)
+bool FuzzyRuleAntecedent::joinWithOR(FuzzySet::SharedPointer &fuzzySet1, FuzzySet::SharedPointer &fuzzySet2)
 {
     // check if two FuzzySet are valid
     if (fuzzySet1 != NULL && fuzzySet2 != NULL)
@@ -75,7 +76,7 @@ bool FuzzyRuleAntecedent::joinWithOR(FuzzySet *fuzzySet1, FuzzySet *fuzzySet2)
 }
 
 // Method to create a FuzzyRuleAntecedent with one FuzzySet and one FuzzyRuleAntecedent, with AND
-bool FuzzyRuleAntecedent::joinWithAND(FuzzySet *fuzzySet, FuzzyRuleAntecedent *fuzzyRuleAntecedent)
+bool FuzzyRuleAntecedent::joinWithAND(FuzzySet::SharedPointer &fuzzySet, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent)
 {
     // check if the FuzzySet and FuzzyRuleAntecedent are valid
     if (fuzzySet != NULL && fuzzyRuleAntecedent != NULL)
@@ -91,13 +92,13 @@ bool FuzzyRuleAntecedent::joinWithAND(FuzzySet *fuzzySet, FuzzyRuleAntecedent *f
 }
 
 // Method to create a FuzzyRuleAntecedent with one FuzzySet and one FuzzyRuleAntecedent, with AND (Inverse Params)
-bool FuzzyRuleAntecedent::joinWithAND(FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzySet *fuzzySet)
+bool FuzzyRuleAntecedent::joinWithAND(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzySet::SharedPointer &fuzzySet)
 {
     return this->joinWithAND(fuzzySet, fuzzyRuleAntecedent);
 }
 
 // Method to create a FuzzyRuleAntecedent with one FuzzySet and one FuzzyRuleAntecedent, with OR
-bool FuzzyRuleAntecedent::joinWithOR(FuzzySet *fuzzySet, FuzzyRuleAntecedent *fuzzyRuleAntecedent)
+bool FuzzyRuleAntecedent::joinWithOR(FuzzySet::SharedPointer &fuzzySet, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent)
 {
     // check if the FuzzySet and FuzzyRuleAntecedent are valid
     if (fuzzySet != NULL && fuzzyRuleAntecedent != NULL)
@@ -113,13 +114,13 @@ bool FuzzyRuleAntecedent::joinWithOR(FuzzySet *fuzzySet, FuzzyRuleAntecedent *fu
 }
 
 // Method to create a FuzzyRuleAntecedent with one FuzzySet and one FuzzyRuleAntecedent, with OR (Inverse Params)
-bool FuzzyRuleAntecedent::joinWithOR(FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzySet *fuzzySet)
+bool FuzzyRuleAntecedent::joinWithOR(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzySet::SharedPointer &fuzzySet)
 {
     return this->joinWithOR(fuzzySet, fuzzyRuleAntecedent);
 }
 
 // Method to create a FuzzyRuleAntecedent with two FuzzyRuleAntecedent, with AND
-bool FuzzyRuleAntecedent::joinWithAND(FuzzyRuleAntecedent *fuzzyRuleAntecedent1, FuzzyRuleAntecedent *fuzzyRuleAntecedent2)
+bool FuzzyRuleAntecedent::joinWithAND(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent1, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent2)
 {
     // check if two FuzzyRuleAntecedent are valid
     if (fuzzyRuleAntecedent1 != NULL && fuzzyRuleAntecedent2 != NULL)
@@ -135,7 +136,7 @@ bool FuzzyRuleAntecedent::joinWithAND(FuzzyRuleAntecedent *fuzzyRuleAntecedent1,
 }
 
 // Method to create a FuzzyRuleAntecedent with two FuzzyRuleAntecedent, with OR
-bool FuzzyRuleAntecedent::joinWithOR(FuzzyRuleAntecedent *fuzzyRuleAntecedent1, FuzzyRuleAntecedent *fuzzyRuleAntecedent2)
+bool FuzzyRuleAntecedent::joinWithOR(FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent1, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent2)
 {
     // check if two FuzzyRuleAntecedent are valid
     if (fuzzyRuleAntecedent1 != NULL && fuzzyRuleAntecedent2 != NULL)

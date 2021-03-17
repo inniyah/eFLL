@@ -10,6 +10,7 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
+
 #include "FuzzyRule.h"
 
 using namespace eFLL;
@@ -19,7 +20,7 @@ FuzzyRule::FuzzyRule()
 {
 }
 
-FuzzyRule::FuzzyRule(int index, FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzyRuleConsequent *fuzzyRuleConsequent)
+FuzzyRule::FuzzyRule(int index, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzyRuleConsequent::SharedPointer &fuzzyRuleConsequent)
 {
     this->index = index;
     this->fired = false;

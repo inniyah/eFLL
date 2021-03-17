@@ -26,21 +26,21 @@ namespace eFLL {
 // Array struct for FuzzyInput objects
 struct fuzzyInputArray
 {
-  FuzzyInput *fuzzyInput;
+  FuzzyInput::SharedPointer fuzzyInput;
   fuzzyInputArray *next;
 };
 
 // Array struct for FuzzyOutput objects
 struct fuzzyOutputArray
 {
-  FuzzyOutput *fuzzyOutput;
+  FuzzyOutput::SharedPointer fuzzyOutput;
   fuzzyOutputArray *next;
 };
 
 // Array struct for FuzzyRule objects
 struct fuzzyRuleArray
 {
-  FuzzyRule *fuzzyRule;
+  FuzzyRule::SharedPointer fuzzyRule;
   fuzzyRuleArray *next;
 };
 
@@ -58,9 +58,9 @@ public:
   ~Fuzzy();
 
   // PUBLIC METHODS
-  bool addFuzzyInput(FuzzyInput *fuzzyInput);
-  bool addFuzzyOutput(FuzzyOutput *fuzzyOutput);
-  bool addFuzzyRule(FuzzyRule *fuzzyRule);
+  bool addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput);
+  bool addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput);
+  bool addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule);
   bool setInput(int fuzzyInputIndex, float crispValue);
   bool fuzzify();
   bool isFiredRule(int fuzzyRuleIndex);

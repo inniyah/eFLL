@@ -24,7 +24,7 @@ namespace eFLL {
 // Array struct for fuzzySet (for Output) objects
 struct fuzzySetOutputArray
 {
-  FuzzySet *fuzzySet;
+  FuzzySet::SharedPointer fuzzySet;
   fuzzySetOutputArray *next;
 };
 
@@ -39,7 +39,7 @@ public:
   // DESTRUCTOR
   ~FuzzyRuleConsequent();
   // PUBLIC METHODS
-  bool addOutput(FuzzySet *fuzzySet);
+  bool addOutput(FuzzySet::SharedPointer &fuzzySet);
   bool evaluate(float power);
 
 private:
