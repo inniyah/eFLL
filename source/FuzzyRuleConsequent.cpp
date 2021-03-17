@@ -35,11 +35,7 @@ bool FuzzyRuleConsequent::addOutput(FuzzySet::SharedPointer &fuzzySet)
     // auxiliary variable to handle the operation
     fuzzySetOutputArray *newOne;
     // allocating in memory
-    if ((newOne = (fuzzySetOutputArray *)malloc(sizeof(fuzzySetOutputArray))) == NULL)
-    {
-        // return false if in out of memory
-        return false;
-    }
+    newOne = new fuzzySetOutputArray();
     // building the object
     newOne->fuzzySet = fuzzySet;
     newOne->next = NULL;
@@ -91,6 +87,6 @@ void FuzzyRuleConsequent::cleanFuzzySets(fuzzySetOutputArray *aux)
     {
         this->cleanFuzzySets(aux->next);
         // emptying allocated memory
-        free(aux);
+        delete aux;
     }
 }

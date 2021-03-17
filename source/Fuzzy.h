@@ -27,21 +27,21 @@ namespace eFLL {
 struct fuzzyInputArray
 {
   FuzzyInput::SharedPointer fuzzyInput;
-  fuzzyInputArray *next;
+  fuzzyInputArray *next = NULL;
 };
 
 // Array struct for FuzzyOutput objects
 struct fuzzyOutputArray
 {
   FuzzyOutput::SharedPointer fuzzyOutput;
-  fuzzyOutputArray *next;
+  fuzzyOutputArray *next = NULL;
 };
 
 // Array struct for FuzzyRule objects
 struct fuzzyRuleArray
 {
   FuzzyRule::SharedPointer fuzzyRule;
-  fuzzyRuleArray *next;
+  fuzzyRuleArray *next = NULL;
 };
 
 // Main class of this library

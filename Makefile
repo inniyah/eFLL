@@ -139,6 +139,7 @@ clean:
 	$(RM) $(subst .pyx,_api.cpp,$(PYX_SRCS))
 	$(RM) $(subst .pyx,.h,$(PYX_SRCS))
 	$(RM) $(subst .pyx,_api.h,$(PYX_SRCS))
+	$(RM) tests/GeneralTest.bin tests/FuzzyTest.bin tests/output.txr
 	@find . -name '*.o' -exec $(RM) {} +
 	@find . -name '*.a' -exec $(RM) {} +
 	@find . -name '*.so' -exec $(RM) {} +
