@@ -24,7 +24,7 @@ namespace eFLL {
 // Array struct for FuzzySet objects
 struct fuzzySetArray
 {
-  FuzzySet::SharedPointer fuzzySet;
+  FuzzySet::SharedPointer fuzzySet = NULL;
   fuzzySetArray *next;
 };
 

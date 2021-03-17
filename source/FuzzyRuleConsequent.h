@@ -25,7 +25,7 @@ namespace eFLL {
 struct fuzzySetOutputArray
 {
   FuzzySet::SharedPointer fuzzySet;
-  fuzzySetOutputArray *next;
+  fuzzySetOutputArray *next = NULL;
 };
 
 class FuzzyRuleConsequent

@@ -35,11 +35,7 @@ bool FuzzyComposition::addPoint(float point, float pertinence)
     // auxiliary variable to handle the operation
     pointsArray *newOne;
     // allocating in memory
-    if ((newOne = (pointsArray *)malloc(sizeof(pointsArray))) == NULL)
-    {
-        // return false if in out of memory
-        return false;
-    }
+    newOne = new pointsArray();
     // populate the struct
     newOne->previous = NULL;
     newOne->point = point;
@@ -242,7 +238,7 @@ void FuzzyComposition::cleanPoints(pointsArray *aux)
     {
         this->cleanPoints(aux->next);
         // emptying allocated memory
-        free(aux);
+        delete aux;
     }
 }
 
@@ -297,11 +293,7 @@ bool FuzzyComposition::rebuild(pointsArray *aSegmentBegin, pointsArray *aSegment
         // auxiliary variable to handle the operation
         pointsArray *aux;
         // allocating in memory
-        if ((aux = (pointsArray *)malloc(sizeof(pointsArray))) == NULL)
-        {
-            // return false if in out of memory
-            return false;
-        }
+        aux = new pointsArray();
         // calculate the point (y) and its pertinence (y) for the new element (pointsArray)
         aux->previous = bSegmentEnd;
         aux->point = x1 + mua * (x2 - x1);
@@ -345,7 +337,7 @@ bool FuzzyComposition::rmvPoint(pointsArray *point)
     if (point != NULL)
     {
         // emptying allocated memory
-        free(point);
+        delete point;
     }
     return true;
 }

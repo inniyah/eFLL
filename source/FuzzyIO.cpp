@@ -60,11 +60,7 @@ bool FuzzyIO::addFuzzySet(FuzzySet::SharedPointer &fuzzySet)
     // auxiliary variable to handle the operation
     fuzzySetArray *newOne;
     // allocating in memory
-    if ((newOne = (fuzzySetArray *)malloc(sizeof(fuzzySetArray))) == NULL)
-    {
-        // return false if in out of memory
-        return false;
-    }
+    newOne = new fuzzySetArray();
     // building the object
     newOne->fuzzySet = fuzzySet;
     newOne->next = NULL;
@@ -114,6 +110,6 @@ void FuzzyIO::cleanFuzzySets(fuzzySetArray *aux)
     {
         this->cleanFuzzySets(aux->next);
         // emptying allocated memory
-        free(aux);
+        delete aux;
     }
 }

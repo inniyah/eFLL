@@ -26,10 +26,10 @@ namespace eFLL {
 // Array struct for points objects
 struct pointsArray
 {
-  pointsArray *previous;
-  float point;
-  float pertinence;
-  pointsArray *next;
+  pointsArray *previous = NULL;
+  float point = 0.0;
+  float pertinence = 0.0;
+  pointsArray *next = NULL;
 };
 
 class FuzzyComposition

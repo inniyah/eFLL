@@ -376,7 +376,6 @@ TEST(Fuzzy, addFuzzyInput)
 {
     auto fuzzy = std::make_shared<Fuzzy>();
 
-
     auto fuzzyInput = std::make_shared<FuzzyInput>(1);
 
     auto fuzzySet1 = std::make_shared<FuzzySet>(0, 10, 10, 20);
@@ -393,7 +392,6 @@ TEST(Fuzzy, addFuzzyOutput)
 {
     auto fuzzy = std::make_shared<Fuzzy>();
 
-
     auto fuzzyOutput = std::make_shared<FuzzyOutput>(1);
 
     auto fuzzySet1 = std::make_shared<FuzzySet>(0, 10, 10, 20);
@@ -409,7 +407,6 @@ TEST(Fuzzy, addFuzzyOutput)
 TEST(Fuzzy, addFuzzyRule)
 {
     auto fuzzy = std::make_shared<Fuzzy>();
-
 
     auto fuzzyRuleAntecedent1 = std::make_shared<FuzzyRuleAntecedent>();
     auto fuzzySet1 = std::make_shared<FuzzySet>(0, 10, 10, 20);
@@ -772,7 +769,6 @@ TEST(Fuzzy, testFromLectureSystemsTwo)
 TEST(Fuzzy, testFromLibraryUsersSystemsCasco)
 {
     auto fuzzy = std::make_shared<Fuzzy>();
-
 
     // FuzzyInput
     auto humedad = std::make_shared<FuzzyInput>(1);

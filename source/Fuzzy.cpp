@@ -43,11 +43,7 @@ bool Fuzzy::addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput)
     // auxiliary variable to handle the operation
     fuzzyInputArray *newOne;
     // allocating in memory
-    if ((newOne = (fuzzyInputArray *)malloc(sizeof(fuzzyInputArray))) == NULL)
-    {
-        // return false if in out of memory
-        return false;
-    }
+    newOne = new fuzzyInputArray();
     // building the object
     newOne->fuzzyInput = fuzzyInput;
     newOne->next = NULL;
@@ -81,11 +77,7 @@ bool Fuzzy::addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput)
     // auxiliary variable to handle the operation
     fuzzyOutputArray *newOne;
     // allocating in memory
-    if ((newOne = (fuzzyOutputArray *)malloc(sizeof(fuzzyOutputArray))) == NULL)
-    {
-        // return false if in out of memory
-        return false;
-    }
+    newOne = new fuzzyOutputArray();
     // building the object
     newOne->fuzzyOutput = fuzzyOutput;
     newOne->next = NULL;
@@ -121,11 +113,7 @@ bool Fuzzy::addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule)
     // auxiliary variable to handle the operation
     fuzzyRuleArray *newOne;
     // allocating in memory
-    if ((newOne = (fuzzyRuleArray *)malloc(sizeof(fuzzyRuleArray))) == NULL)
-    {
-        // return false if in out of memory
-        return false;
-    }
+    newOne = new fuzzyRuleArray();
     // building the object
     newOne->fuzzyRule = fuzzyRule;
     newOne->next = NULL;
@@ -287,7 +275,7 @@ void Fuzzy::cleanFuzzyInputs(fuzzyInputArray *aux)
     {
         this->cleanFuzzyInputs(aux->next);
         // emptying allocated memory
-        free(aux);
+        delete aux;
     }
 }
 
@@ -298,7 +286,7 @@ void Fuzzy::cleanFuzzyOutputs(fuzzyOutputArray *aux)
     {
         this->cleanFuzzyOutputs(aux->next);
         // emptying allocated memory
-        free(aux);
+        delete aux;
     }
 }
 
@@ -309,6 +297,6 @@ void Fuzzy::cleanFuzzyRules(fuzzyRuleArray *aux)
     {
         this->cleanFuzzyRules(aux->next);
         // emptying allocated memory
-        free(aux);
+        delete aux;
     }
 }
