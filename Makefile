@@ -71,6 +71,7 @@ LIBS=
 all: general_simple_sample.bin general_advanced_sample.bin efll.so
 
 PYX_SRCS= \
+	cython/eFLL/Fuzzy.pyx \
 	examples/cython/example.pyx
 
 C_SRCS= \
@@ -139,6 +140,7 @@ clean:
 	$(RM) $(subst .pyx,_api.cpp,$(PYX_SRCS))
 	$(RM) $(subst .pyx,.h,$(PYX_SRCS))
 	$(RM) $(subst .pyx,_api.h,$(PYX_SRCS))
+	$(RM) general_advanced_sample.bin  general_simple_sample.bin
 	$(RM) tests/GeneralTest.bin tests/FuzzyTest.bin tests/output.txr
 	@find . -name '*.o' -exec $(RM) {} +
 	@find . -name '*.a' -exec $(RM) {} +
