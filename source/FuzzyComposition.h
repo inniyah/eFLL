@@ -10,11 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYCOMPOSITION_H
-#define FUZZYCOMPOSITION_H
 
-// IMPORTING NECESSARY LIBRARIES
-#include <stdlib.h>
+#pragma once
+
+#ifndef FUZZYCOMPOSITION_H_69CC4C70_86FD_11EB_BBA3_836BA6AD27E7
+#define FUZZYCOMPOSITION_H_69CC4C70_86FD_11EB_BBA3_836BA6AD27E7
+
+#include "FuzzyCommon.h"
 
 namespace eFLL {
 
@@ -33,6 +35,9 @@ struct pointsArray
 class FuzzyComposition
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzyComposition>;
+  using WeakPointer = std::weak_ptr<FuzzyComposition>;
+
   // CONTRUCTORS
   FuzzyComposition();
   // DESTRUCTOR
@@ -57,4 +62,4 @@ private:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYCOMPOSITION_H_69CC4C70_86FD_11EB_BBA3_836BA6AD27E7

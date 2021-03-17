@@ -10,10 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYRULE_H
-#define FUZZYRULE_H
 
-// IMPORTING NECESSARY LIBRARIES
+#pragma once
+
+#ifndef FUZZYRULE_H_69CC4DC4_86FD_11EB_BBA6_57F3151559AD
+#define FUZZYRULE_H_69CC4DC4_86FD_11EB_BBA6_57F3151559AD
+
+#include "FuzzyCommon.h"
 #include "FuzzyRuleAntecedent.h"
 #include "FuzzyRuleConsequent.h"
 
@@ -22,6 +25,9 @@ namespace eFLL {
 class FuzzyRule
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzyRule>;
+  using WeakPointer = std::weak_ptr<FuzzyRule>;
+
   // CONTRUCTORS
   FuzzyRule();
   FuzzyRule(int index, FuzzyRuleAntecedent *fuzzyRuleAntecedent, FuzzyRuleConsequent *fuzzyRuleConsequent);
@@ -40,4 +46,4 @@ private:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYRULE_H_69CC4DC4_86FD_11EB_BBA6_57F3151559AD

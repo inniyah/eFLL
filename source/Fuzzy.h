@@ -10,12 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZY_H
-#define FUZZY_H
 
-// IMPORTING NECESSARY LIBRARIES
-#include <inttypes.h>
+#pragma once
 
+#ifndef FUZZY_H_69CC4F40_86FD_11EB_BBAA_57E5E1373EE0
+#define FUZZY_H_69CC4F40_86FD_11EB_BBAA_57E5E1373EE0
+
+#include "FuzzyCommon.h"
 #include "FuzzyInput.h"
 #include "FuzzyOutput.h"
 #include "FuzzyRule.h"
@@ -47,6 +48,9 @@ struct fuzzyRuleArray
 class Fuzzy
 {
 public:
+  using SharedPointer = std::shared_ptr<Fuzzy>;
+  using WeakPointer = std::weak_ptr<Fuzzy>;
+
   // CONTRUCTORS
   Fuzzy();
 
@@ -79,4 +83,4 @@ private:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZY_H_69CC4F40_86FD_11EB_BBAA_57E5E1373EE0

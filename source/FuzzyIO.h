@@ -10,12 +10,13 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYIO_H
-#define FUZZYIO_H
 
-// IMPORTING NECESSARY LIBRARIES
-#include <stdlib.h>
+#pragma once
 
+#ifndef FUZZYIO_H_69CC4E3C_86FD_11EB_BBA7_7BFC87568D80
+#define FUZZYIO_H_69CC4E3C_86FD_11EB_BBA7_7BFC87568D80
+
+#include "FuzzyCommon.h"
 #include "FuzzySet.h"
 
 namespace eFLL {
@@ -30,6 +31,9 @@ struct fuzzySetArray
 class FuzzyIO
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzyIO>;
+  using WeakPointer = std::weak_ptr<FuzzyIO>;
+
   // CONTRUCTORS
   FuzzyIO();
   FuzzyIO(int index);
@@ -54,4 +58,4 @@ protected:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYIO_H_69CC4E3C_86FD_11EB_BBA7_7BFC87568D80

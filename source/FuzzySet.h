@@ -10,14 +10,22 @@
  *                      Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#ifndef FUZZYSET_H
-#define FUZZYSET_H
+
+#pragma once
+
+#ifndef FUZZYSET_H_69CC4BC6_86FD_11EB_BBA2_E3B40FC50D5D
+#define FUZZYSET_H_69CC4BC6_86FD_11EB_BBA2_E3B40FC50D5D
+
+#include "FuzzyCommon.h"
 
 namespace eFLL {
 
 class FuzzySet
 {
 public:
+  using SharedPointer = std::shared_ptr<FuzzySet>;
+  using WeakPointer = std::weak_ptr<FuzzySet>;
+
   // CONTRUCTORS
   FuzzySet();
   FuzzySet(float a, float b, float c, float d);
@@ -42,4 +50,4 @@ private:
 
 } // namespace eFLL
 
-#endif
+#endif // FUZZYSET_H_69CC4BC6_86FD_11EB_BBA2_E3B40FC50D5D
