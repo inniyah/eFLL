@@ -186,6 +186,15 @@ float FuzzyComposition::calculate()
             numerator += middle * area;
             denominator += area;
         }
+        // if a singleton (Not properly a membership function)
+        else if (aux->previous == NULL && aux->next == NULL)
+        {
+            float area = aux->pertinence;
+            float middle = aux->point;
+            numerator += middle * area;
+            denominator += area;
+        }
+
         aux = aux->next;
     }
     // avoiding zero division
