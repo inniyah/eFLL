@@ -68,11 +68,10 @@ CYINCS= \
 
 LIBS=
 
-all: general_simple_sample.bin general_advanced_sample.bin efll.so
+all: general_simple_sample.bin general_advanced_sample.bin eFLL.so
 
 PYX_SRCS= \
-	cython/eFLL/Fuzzy.pyx \
-	examples/cython/example.pyx
+	cython/eFLL/eFLL.pyx
 
 C_SRCS= \
 
@@ -104,7 +103,7 @@ ADVANCED_OBJS= $(subst .cpp,.o,$(ADVANCED_SRCS)) $(OBJS)
 general_advanced_sample.bin: $(ADVANCED_OBJS)
 	$(CXX) $(CPPSTD) $(CSTD) $(LDFLAGS) $(PKG_CONFIG_LDFLAGS) -o $@ $+ $(LIBS) $(PKG_CONFIG_LIBS)
 
-efll.so: $(OBJS)
+eFLL.so: $(OBJS)
 	$(CXX) -shared $(CPPSTD) $(CSTD) $(LDFLAGS) $(PKG_CONFIG_LDFLAGS) -o $@ $+ $(LIBS) $(PKG_CONFIG_LIBS)
 
 %.o: %.cpp
