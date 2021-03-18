@@ -8,6 +8,8 @@ cdef class FuzzySet:
     cdef shared_ptr[_FuzzySet] thisptr
     def __cinit__(self):
         self.thisptr = shared_ptr[_FuzzySet](new _FuzzySet())
+    def __cinit__(self, float a, float b, float c, float d):
+        self.thisptr = shared_ptr[_FuzzySet](new _FuzzySet(a, b, c, d))
     def __dealloc__(self):
         self.thisptr.reset()
     def getPointA(self):
