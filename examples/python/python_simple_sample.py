@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+
 from eFLL import *
 
 from time import time
 from random import seed, random
+
+seed(time())
 
 fuzzy = Fuzzy()
 
@@ -53,7 +58,6 @@ thenSpeedFast.addOutput(fast)
 fuzzyRule03 = FuzzyRule(3, ifDistanceBig, thenSpeedFast)
 fuzzy.addFuzzyRule(fuzzyRule03)
 
-seed(time())
 input = random() * 100.0
 print(f"Distance (input): {input}")
 fuzzy.setInput(1, input)

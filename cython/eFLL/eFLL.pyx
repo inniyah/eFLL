@@ -63,22 +63,28 @@ cdef class FuzzyRuleAntecedent:
         self.thisptr.reset()
     def joinSingle(self, FuzzySet fuzzySet):
         return deref(self.thisptr).joinSingle(fuzzySet.thisptr)
-    def joinWithAND(self, FuzzySet fuzzySet1, FuzzySet fuzzySet2):
-        return deref(self.thisptr).joinWithAND(fuzzySet1.thisptr, fuzzySet2.thisptr)
-    def joinWithOR(self, FuzzySet fuzzySet1, FuzzySet fuzzySet2):
-        return deref(self.thisptr).joinWithOR(fuzzySet1.thisptr, fuzzySet2.thisptr)
-    def joinWithAND(self, FuzzySet fuzzySet, FuzzyRuleAntecedent fuzzyRuleAntecedent):
-        return deref(self.thisptr).joinWithAND(fuzzySet.thisptr, fuzzyRuleAntecedent.thisptr)
-    def joinWithAND(self, FuzzyRuleAntecedent fuzzyRuleAntecedent, FuzzySet fuzzySet):
-        return deref(self.thisptr).joinWithAND(fuzzyRuleAntecedent.thisptr, fuzzySet.thisptr)
-    def joinWithOR(self, FuzzySet fuzzySet, FuzzyRuleAntecedent fuzzyRuleAntecedent):
-        return deref(self.thisptr).joinWithOR(fuzzySet.thisptr, fuzzyRuleAntecedent.thisptr)
-    def joinWithOR(self, FuzzyRuleAntecedent fuzzyRuleAntecedent, FuzzySet fuzzySet):
-        return deref(self.thisptr).joinWithOR(fuzzyRuleAntecedent.thisptr, fuzzySet.thisptr)
-    def joinWithAND(self, FuzzyRuleAntecedent fuzzyRuleAntecedent1, FuzzyRuleAntecedent fuzzyRuleAntecedent2):
-        return deref(self.thisptr).joinWithAND(fuzzyRuleAntecedent1.thisptr, fuzzyRuleAntecedent2.thisptr)
-    def joinWithOR(self, FuzzyRuleAntecedent fuzzyRuleAntecedent1, FuzzyRuleAntecedent fuzzyRuleAntecedent2):
-        return deref(self.thisptr).joinWithOR(fuzzyRuleAntecedent1.thisptr, fuzzyRuleAntecedent2.thisptr)
+    def joinWithAND(self, item1, item2):
+        if isinstance(item1, FuzzySet) and isinstance(item2, FuzzySet):
+            return deref(self.thisptr).joinWithAND((<FuzzySet>item1).thisptr, (<FuzzySet>item2).thisptr)
+        elif isinstance(item1, FuzzySet) and isinstance(item2, FuzzyRuleAntecedent):
+            return deref(self.thisptr).joinWithAND((<FuzzySet>item1).thisptr, (<FuzzyRuleAntecedent>item2).thisptr)
+        elif isinstance(item1, FuzzyRuleAntecedent) and isinstance(item2, FuzzySet):
+            return deref(self.thisptr).joinWithAND((<FuzzyRuleAntecedent>item1).thisptr, (<FuzzySet>item2).thisptr)
+        elif isinstance(item1, FuzzyRuleAntecedent) and isinstance(item2, FuzzyRuleAntecedent):
+            return deref(self.thisptr).joinWithAND((<FuzzyRuleAntecedent>item1).thisptr, (<FuzzyRuleAntecedent>item2).thisptr)
+        else:
+            raise ValueError("Arguments are neither of type FuzzySet nor FuzzyRuleAntecedent")
+    def joinWithOR(self, item1, item2):
+        if isinstance(item1, FuzzySet) and isinstance(item2, FuzzySet):
+            return deref(self.thisptr).joinWithOR((<FuzzySet>item1).thisptr, (<FuzzySet>item2).thisptr)
+        elif isinstance(item1, FuzzySet) and isinstance(item2, FuzzyRuleAntecedent):
+            return deref(self.thisptr).joinWithOR((<FuzzySet>item1).thisptr, (<FuzzyRuleAntecedent>item2).thisptr)
+        elif isinstance(item1, FuzzyRuleAntecedent) and isinstance(item2, FuzzySet):
+            return deref(self.thisptr).joinWithOR((<FuzzyRuleAntecedent>item1).thisptr, (<FuzzySet>item2).thisptr)
+        elif isinstance(item1, FuzzyRuleAntecedent) and isinstance(item2, FuzzyRuleAntecedent):
+            return deref(self.thisptr).joinWithOR((<FuzzyRuleAntecedent>item1).thisptr, (<FuzzyRuleAntecedent>item2).thisptr)
+        else:
+            raise ValueError("Arguments are neither of type FuzzySet nor FuzzyRuleAntecedent")
 
 cdef class FuzzyRuleConsequent:
     cdef shared_ptr[_FuzzyRuleConsequent] thisptr

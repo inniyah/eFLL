@@ -40,12 +40,12 @@ cdef extern from "FuzzyRuleAntecedent.h" namespace "eFLL" nogil:
     ctypedef weak_ptr[_FuzzyRuleAntecedent] WeakPointer
     bool joinSingle(_FuzzySet.SharedPointer &fuzzySet)
     bool joinWithAND(_FuzzySet.SharedPointer &fuzzySet1, _FuzzySet.SharedPointer &fuzzySet2)
-    bool joinWithOR(_FuzzySet.SharedPointer &fuzzySet1, _FuzzySet.SharedPointer &fuzzySet2)
     bool joinWithAND(_FuzzySet.SharedPointer &fuzzySet, _FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent)
     bool joinWithAND(_FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent, _FuzzySet.SharedPointer &fuzzySet)
+    bool joinWithAND(_FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent1, _FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent2)
+    bool joinWithOR(_FuzzySet.SharedPointer &fuzzySet1, _FuzzySet.SharedPointer &fuzzySet2)
     bool joinWithOR(_FuzzySet.SharedPointer &fuzzySet, _FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent)
     bool joinWithOR(_FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent, _FuzzySet.SharedPointer &fuzzySet)
-    bool joinWithAND(_FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent1, _FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent2)
     bool joinWithOR(_FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent1, _FuzzyRuleAntecedent.SharedPointer &fuzzyRuleAntecedent2)
     float evaluate()
 
