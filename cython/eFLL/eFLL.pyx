@@ -104,7 +104,7 @@ cdef class FuzzyRule:
     def isFired(self):
         return deref(self.thisptr).isFired()
 
-cdef class FuzzyInput:
+cdef class FuzzyInput():
     cdef shared_ptr[_FuzzyInput] thisptr
     def __cinit__(self):
         self.thisptr = shared_ptr[_FuzzyInput](new _FuzzyInput())
@@ -114,8 +114,18 @@ cdef class FuzzyInput:
         self.thisptr.reset()
     def calculateFuzzySetPertinences(self):
         return deref(self.thisptr).calculateFuzzySetPertinences()
+    def getIndex(self):
+        return deref(self.thisptr).getIndex()
+    def setCrispInput(self, float crispInput):
+        deref(self.thisptr).setCrispInput(crispInput)
+    def getCrispInput(self):
+        return deref(self.thisptr).getCrispInput()
+    def addFuzzySet(self, FuzzySet fuzzySet):
+        return deref(self.thisptr).addFuzzySet(fuzzySet.thisptr)
+    def resetFuzzySets(self):
+        deref(self.thisptr).resetFuzzySets()
 
-cdef class FuzzyOutput:
+cdef class FuzzyOutput():
     cdef shared_ptr[_FuzzyOutput] thisptr
     def __cinit__(self):
         self.thisptr = shared_ptr[_FuzzyOutput](new _FuzzyOutput())
@@ -133,6 +143,16 @@ cdef class FuzzyOutput:
         fuzzyComposition = FuzzyComposition()
         fuzzyComposition.thisptr = deref(self.thisptr).getFuzzyComposition()
         return fuzzyComposition
+    def getIndex(self):
+        return deref(self.thisptr).getIndex()
+    def setCrispInput(self, float crispInput):
+        deref(self.thisptr).setCrispInput(crispInput)
+    def getCrispInput(self):
+        return deref(self.thisptr).getCrispInput()
+    def addFuzzySet(self, FuzzySet fuzzySet):
+        return deref(self.thisptr).addFuzzySet(fuzzySet.thisptr)
+    def resetFuzzySets(self):
+        deref(self.thisptr).resetFuzzySets()
 
 cdef class Fuzzy:
     cdef shared_ptr[_Fuzzy] thisptr
