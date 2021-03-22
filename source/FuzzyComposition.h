@@ -24,16 +24,14 @@ namespace eFLL {
 #define EPS 1.0E-3
 
 // Array struct for points objects
-struct pointsArray
-{
+struct pointsArray {
   pointsArray *previous = NULL;
   float point = 0.0;
   float pertinence = 0.0;
   pointsArray *next = NULL;
 };
 
-class FuzzyComposition
-{
+class FuzzyComposition {
 public:
   using SharedPointer = std::shared_ptr<FuzzyComposition>;
   using WeakPointer = std::weak_ptr<FuzzyComposition>;

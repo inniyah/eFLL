@@ -22,14 +22,12 @@
 namespace eFLL {
 
 // Array struct for FuzzySet objects
-struct fuzzySetArray
-{
+struct fuzzySetArray {
   FuzzySet::SharedPointer fuzzySet = NULL;
   fuzzySetArray *next;
 };
 
-class FuzzyIO
-{
+class FuzzyIO {
 public:
   using SharedPointer = std::shared_ptr<FuzzyIO>;
   using WeakPointer = std::weak_ptr<FuzzyIO>;
@@ -43,7 +41,7 @@ public:
   int getIndex();
   void setCrispInput(float crispInput);
   float getCrispInput();
-  bool addFuzzySet(FuzzySet::SharedPointer &fuzzySet);
+  FuzzySet::SharedPointer &addFuzzySet(FuzzySet::SharedPointer &fuzzySet);
   void resetFuzzySets();
 
 protected:

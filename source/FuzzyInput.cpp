@@ -16,32 +16,27 @@
 using namespace eFLL;
 
 // CONTRUCTORS
-FuzzyInput::FuzzyInput() : FuzzyIO()
-{
+FuzzyInput::FuzzyInput() : FuzzyIO() {
     // no custom construction, using the father (FuzzyIO) constructor
 }
 
-FuzzyInput::FuzzyInput(int index) : FuzzyIO(index)
-{
+FuzzyInput::FuzzyInput(int index) : FuzzyIO(index) {
     // no custom construction, using the father (FuzzyIO) constructor
 }
 
 // DESTRUCTOR
-FuzzyInput::~FuzzyInput()
-{
+FuzzyInput::~FuzzyInput() {
     // no custom destruction, using the father (FuzzyIO) destructor
 }
 
 // PUBLIC METHODS
 
 // Method to calculate the pertinence of all FuzzySet
-bool FuzzyInput::calculateFuzzySetPertinences()
-{
+bool FuzzyInput::calculateFuzzySetPertinences() {
     // auxiliary variable to handle the operation
     fuzzySetArray *aux = this->fuzzySets;
     // while not in the end of the array, iterate
-    while (aux != NULL)
-    {
+    while (aux != NULL) {
         // call calculatePertinence for each FuzzySet
         aux->fuzzySet->calculatePertinence(this->crispInput);
         aux = aux->next;

@@ -16,57 +16,46 @@
 using namespace eFLL;
 
 // CONTRUCTORS
-FuzzyOutput::FuzzyOutput() : FuzzyIO()
-{
+FuzzyOutput::FuzzyOutput() : FuzzyIO() {
     // instantiating a FuzzyComposition object
     this->fuzzyComposition = std::make_shared<FuzzyComposition>();
 }
 
-FuzzyOutput::FuzzyOutput(int index) : FuzzyIO(index)
-{
+FuzzyOutput::FuzzyOutput(int index) : FuzzyIO(index) {
     // instantiating a FuzzyComposition object
     this->fuzzyComposition = std::make_shared<FuzzyComposition>();
 }
 
 // DESTRUCTOR
-FuzzyOutput::~FuzzyOutput()
-{
+FuzzyOutput::~FuzzyOutput() {
     // reset fuzzyComposition object
     this->fuzzyComposition->empty();
 }
 
 // PUBLIC METHODS
 
-bool FuzzyOutput::truncate()
-{
+bool FuzzyOutput::truncate() {
     // reset fuzzyComposition object
     this->fuzzyComposition->empty();
     // auxiliary variable to handle the operation
     fuzzySetArray *aux = this->fuzzySets;
     // while not in the end of the array, iterate
-    while (aux != NULL)
-    {
+    while (aux != NULL) {
         // if the FuzzySet was trigged (has some pertinence)
-        if (aux->fuzzySet->getPertinence() > 0.0)
-        {
+        if (aux->fuzzySet->getPertinence() > 0.0) {
             // Check if it is not a "trapeze" without its left triangle or singleton, before include the point A
-            if (aux->fuzzySet->getPointA() != aux->fuzzySet->getPointB())
-            {
+            if (aux->fuzzySet->getPointA() != aux->fuzzySet->getPointB()) {
                 // include it
                 this->fuzzyComposition->addPoint(aux->fuzzySet->getPointA(), 0.0);
             }
             // check if it is a triangle (B == C) and (A <> D)
-            if (aux->fuzzySet->getPointB() == aux->fuzzySet->getPointC() && aux->fuzzySet->getPointA() != aux->fuzzySet->getPointD())
-            {
+            if (aux->fuzzySet->getPointB() == aux->fuzzySet->getPointC() && aux->fuzzySet->getPointA() != aux->fuzzySet->getPointD()) {
                 // check if the pertinence is the max
-                if (aux->fuzzySet->getPertinence() == 1.0)
-                {
+                if (aux->fuzzySet->getPertinence() == 1.0) {
                     // include it
                     this->fuzzyComposition->addPoint(aux->fuzzySet->getPointB(), aux->fuzzySet->getPertinence());
-                }
                 // if the pertinence is below the max, and it is a triangle, calculate the new point B and C
-                else
-                {
+                } else {
                     // initiate a new point with current values of B (here it does matters, it always will be changed)
                     float newPointB = aux->fuzzySet->getPointB();
                     float newPertinenceB = aux->fuzzySet->getPertinence();
@@ -82,22 +71,17 @@ bool FuzzyOutput::truncate()
                     // include it
                     this->fuzzyComposition->addPoint(newPointC, newPertinenceC);
                 }
-            }
             // if until now, it was not a triangle
             // check if (B <> C), if true, it is a trapeze (this code is the same of the triangle, except when the pertinence is 1.0, here we include the two points [B and C], because they are not equal)
-            else if (aux->fuzzySet->getPointB() != aux->fuzzySet->getPointC())
-            {
+            } else if (aux->fuzzySet->getPointB() != aux->fuzzySet->getPointC()) {
                 // check if the pertinence is the max
-                if (aux->fuzzySet->getPertinence() == 1.0)
-                {
+                if (aux->fuzzySet->getPertinence() == 1.0) {
                     // include it
                     this->fuzzyComposition->addPoint(aux->fuzzySet->getPointB(), aux->fuzzySet->getPertinence());
                     // include it
                     this->fuzzyComposition->addPoint(aux->fuzzySet->getPointC(), aux->fuzzySet->getPertinence());
-                }
                 // if the pertinence is below the max, and it is a triangle, calculate the new point B and C
-                else
-                {
+                } else {
                     // initiate a new point with current values of B (here it does matters, it always will be changed)
                     float newPointB = aux->fuzzySet->getPointB();
                     float newPertinenceB = aux->fuzzySet->getPertinence();
@@ -113,16 +97,13 @@ bool FuzzyOutput::truncate()
                     // include it
                     this->fuzzyComposition->addPoint(newPointC, newPertinenceC);
                 }
-            }
             // if it is not a triangle non a trapeze, it is a singleton
-            else
-            {
+            } else {
                 // include it
                 this->fuzzyComposition->addPoint(aux->fuzzySet->getPointB(), aux->fuzzySet->getPertinence());
             }
             // Check if it is not a "trapeze" without its right triangle or singleton, before include the point D
-            if (aux->fuzzySet->getPointC() != aux->fuzzySet->getPointD())
-            {
+            if (aux->fuzzySet->getPointC() != aux->fuzzySet->getPointD()) {
                 // include it
                 this->fuzzyComposition->addPoint(aux->fuzzySet->getPointD(), 0.0);
             }
@@ -135,30 +116,24 @@ bool FuzzyOutput::truncate()
 }
 
 // Method to run the calculate of FuzzyComposition and return the result
-float FuzzyOutput::getCrispOutput()
-{
+float FuzzyOutput::getCrispOutput() {
     return this->fuzzyComposition->calculate();
 }
 
 // Method to sort the FuzzySet by the reference of the point A in an ascending order
 // It is just a simple Bubble Sort
-bool FuzzyOutput::order()
-{
+bool FuzzyOutput::order() {
     // instantiating some auxiliary variables
     fuzzySetArray *aux1 = this->fuzzySets;
     fuzzySetArray *aux2 = this->fuzzySets;
     // while not in the end of the array, iterate
-    while (aux1 != NULL)
-    {
+    while (aux1 != NULL) {
         // iterate again to ensure all matches, for the worst case (complet inversion)
-        while (aux2 != NULL)
-        {
+        while (aux2 != NULL) {
             // check if not in the last element
-            if (aux2->next != NULL)
-            {
+            if (aux2->next != NULL) {
                 // check if the point from the first is bigger the the second
-                if (aux2->fuzzySet->getPointA() > aux2->next->fuzzySet->getPointA())
-                {
+                if (aux2->fuzzySet->getPointA() > aux2->next->fuzzySet->getPointA()) {
                     // if true, swap the FuzzySet
                     this->swap(aux2, aux2->next);
                 }
@@ -173,16 +148,14 @@ bool FuzzyOutput::order()
 }
 
 // Method to get the value (pointer) of fuzzyComposition
-FuzzyComposition::SharedPointer FuzzyOutput::getFuzzyComposition()
-{
+FuzzyComposition::SharedPointer FuzzyOutput::getFuzzyComposition() {
     return this->fuzzyComposition;
 }
 
 // PRIVATE METHODS
 
 // Method to invert the values (references) of two FuzzySet
-bool FuzzyOutput::swap(fuzzySetArray *fuzzySetA, fuzzySetArray *fuzzySetB)
-{
+bool FuzzyOutput::swap(fuzzySetArray *fuzzySetA, fuzzySetArray *fuzzySetB) {
     // put the first into an auxiliary variable
     auto aux = fuzzySetA->fuzzySet;
     // put the second into the first
@@ -193,8 +166,7 @@ bool FuzzyOutput::swap(fuzzySetArray *fuzzySetA, fuzzySetArray *fuzzySetB)
 }
 
 // Method to rebuild some point, the new point is calculated finding the intersection between two lines
-bool FuzzyOutput::rebuild(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, float *point, float *pertinence)
-{
+bool FuzzyOutput::rebuild(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, float *point, float *pertinence) {
     // help variables
     float denom, numera, numerb;
     float mua, mub;
@@ -203,36 +175,29 @@ bool FuzzyOutput::rebuild(float x1, float y1, float x2, float y2, float x3, floa
     numera = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
     numerb = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
     // if negative, convert to positive
-    if (denom < 0.0)
-    {
+    if (denom < 0.0) {
         denom *= -1.0;
     }
     // If the denominator is zero or close to it, it means that the lines are parallels, so return false for intersection
-    if (denom < EPS)
-    {
+    if (denom < EPS) {
         // return false for intersection
         return false;
     }
     // if negative, convert to positive
-    if (numera < 0.0)
-    {
+    if (numera < 0.0) {
         numera *= -1.0;
     }
     // if negative, convert to positive
-    if (numerb < 0.0)
-    {
+    if (numerb < 0.0) {
         numerb *= -1.0;
     }
     // verify if has intersection between the segments
     mua = numera / denom;
     mub = numerb / denom;
-    if (mua < 0.0 || mua > 1.0 || mub < 0.0 || mub > 1.0)
-    {
+    if (mua < 0.0 || mua > 1.0 || mub < 0.0 || mub > 1.0) {
         // return false for intersection
         return false;
-    }
-    else
-    {
+    } else {
         // calculate and setting the new point and pertinence
         *point = x1 + mua * (x2 - x1);
         *pertinence = y1 + mua * (y2 - y1);

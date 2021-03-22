@@ -23,16 +23,12 @@ namespace eFLL {
 
 // CONSTANTS
 // possible logic operators
-#define OP_AND 1
-#define OP_OR 2
-// possible join associations modes
-#define MODE_FS 1
-#define MODE_FS_FS 2
-#define MODE_FS_FRA 3
-#define MODE_FRA_FRA 4
+enum { OP_AND = 1, OP_OR = 2 };
 
-class FuzzyRuleAntecedent
-{
+// possible join associations modes
+enum { MODE_FS = 1, MODE_FS_FS = 2, MODE_FS_FRA = 3, MODE_FRA_FRA = 4 };
+
+class FuzzyRuleAntecedent {
 public:
   using SharedPointer = std::shared_ptr<FuzzyRuleAntecedent>;
   using WeakPointer = std::weak_ptr<FuzzyRuleAntecedent>;

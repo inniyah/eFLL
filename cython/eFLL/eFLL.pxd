@@ -75,7 +75,7 @@ cdef extern from "FuzzyIO.h" namespace "eFLL" nogil:
     int getIndex()
     void setCrispInput(float crispInput)
     float getCrispInput()
-    bool addFuzzySet(_FuzzySet.SharedPointer &fuzzySet)
+    _FuzzySet.SharedPointer &addFuzzySet(_FuzzySet.SharedPointer &fuzzySet)
     void resetFuzzySets()
 
 cdef extern from "FuzzyInput.h" namespace "eFLL" nogil:

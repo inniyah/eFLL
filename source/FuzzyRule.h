@@ -22,8 +22,7 @@
 
 namespace eFLL {
 
-class FuzzyRule
-{
+class FuzzyRule {
 public:
   using SharedPointer = std::shared_ptr<FuzzyRule>;
   using WeakPointer = std::weak_ptr<FuzzyRule>;

@@ -22,14 +22,12 @@
 namespace eFLL {
 
 // Array struct for fuzzySet (for Output) objects
-struct fuzzySetOutputArray
-{
+struct fuzzySetOutputArray {
   FuzzySet::SharedPointer fuzzySet;
   fuzzySetOutputArray *next = NULL;
 };
 
-class FuzzyRuleConsequent
-{
+class FuzzyRuleConsequent {
 public:
   using SharedPointer = std::shared_ptr<FuzzyRuleConsequent>;
   using WeakPointer = std::weak_ptr<FuzzyRuleConsequent>;

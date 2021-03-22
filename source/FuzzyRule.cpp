@@ -16,12 +16,10 @@
 using namespace eFLL;
 
 // CONTRUCTORS
-FuzzyRule::FuzzyRule()
-{
+FuzzyRule::FuzzyRule() {
 }
 
-FuzzyRule::FuzzyRule(int index, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzyRuleConsequent::SharedPointer &fuzzyRuleConsequent)
-{
+FuzzyRule::FuzzyRule(int index, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAntecedent, FuzzyRuleConsequent::SharedPointer &fuzzyRuleConsequent) {
     this->index = index;
     this->fired = false;
     this->fuzzyRuleAntecedent = fuzzyRuleAntecedent;
@@ -31,17 +29,14 @@ FuzzyRule::FuzzyRule(int index, FuzzyRuleAntecedent::SharedPointer &fuzzyRuleAnt
 // PUBLIC METHODS
 
 // Method to get the value of index
-int FuzzyRule::getIndex()
-{
+int FuzzyRule::getIndex() {
     return this->index;
 }
 
 // Method to evaluate the total expression
-bool FuzzyRule::evaluateExpression()
-{
+bool FuzzyRule::evaluateExpression() {
     // check if the FuzzyRuleAntecedent and FuzzyRuleConsequent are valid
-    if (this->fuzzyRuleAntecedent != NULL && this->fuzzyRuleConsequent != NULL)
-    {
+    if (this->fuzzyRuleAntecedent != NULL && this->fuzzyRuleConsequent != NULL) {
         // call the evaluator in the FuzzyRuleAntecedent
         float powerOfAntecedent = this->fuzzyRuleAntecedent->evaluate();
         // if the power of FuzzyRuleAntecedent is bigget the 0.0, this rule was fired, else, no
@@ -53,7 +48,6 @@ bool FuzzyRule::evaluateExpression()
 }
 
 // Method to get the value of fired
-bool FuzzyRule::isFired()
-{
+bool FuzzyRule::isFired() {
     return this->fired;
 }

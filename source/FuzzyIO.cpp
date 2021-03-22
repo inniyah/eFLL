@@ -16,12 +16,10 @@
 using namespace eFLL;
 
 // CONTRUCTORS
-FuzzyIO::FuzzyIO()
-{
+FuzzyIO::FuzzyIO() {
 }
 
-FuzzyIO::FuzzyIO(int index)
-{
+FuzzyIO::FuzzyIO(int index) {
     this->index = index;
     this->crispInput = 0.0;
     // Initializing pointers with NULL
@@ -29,34 +27,29 @@ FuzzyIO::FuzzyIO(int index)
 }
 
 // DESTRUCTOR
-FuzzyIO::~FuzzyIO()
-{
+FuzzyIO::~FuzzyIO() {
     this->cleanFuzzySets(this->fuzzySets);
 }
 
 // PUBLIC METHODS
 
 // Method to get the value of index
-int FuzzyIO::getIndex()
-{
+int FuzzyIO::getIndex() {
     return this->index;
 }
 
 // Method to set the value of crispInput
-void FuzzyIO::setCrispInput(float crispInput)
-{
+void FuzzyIO::setCrispInput(float crispInput) {
     this->crispInput = crispInput;
 }
 
 // Method to get the value of crispInput
-float FuzzyIO::getCrispInput()
-{
+float FuzzyIO::getCrispInput() {
     return this->crispInput;
 }
 
 // Method to include a new FuzzySet into FuzzyIO
-bool FuzzyIO::addFuzzySet(FuzzySet::SharedPointer &fuzzySet)
-{
+FuzzySet::SharedPointer &FuzzyIO::addFuzzySet(FuzzySet::SharedPointer &fuzzySet) {
     // auxiliary variable to handle the operation
     fuzzySetArray *newOne;
     // allocating in memory
@@ -65,37 +58,30 @@ bool FuzzyIO::addFuzzySet(FuzzySet::SharedPointer &fuzzySet)
     newOne->fuzzySet = fuzzySet;
     newOne->next = NULL;
     // if it is the first FuzzySet, set it as the head
-    if (this->fuzzySets == NULL)
-    {
+    if (this->fuzzySets == NULL) {
         this->fuzzySets = newOne;
-    }
-    else
-    {
+    } else {
         // auxiliary variable to handle the operation
         fuzzySetArray *aux = this->fuzzySets;
         // find the last element of the array
-        while (aux != NULL)
-        {
-            if (aux->next == NULL)
-            {
+        while (aux != NULL) {
+            if (aux->next == NULL) {
                 // make the relations between them
                 aux->next = newOne;
-                return true;
+                return newOne->fuzzySet;
             }
             aux = aux->next;
         }
     }
-    return true;
+    return newOne->fuzzySet;
 }
 
 // Method to reset all FuzzySet of this collection
-void FuzzyIO::resetFuzzySets()
-{
+void FuzzyIO::resetFuzzySets() {
     // auxiliary variable to handle the operation
     fuzzySetArray *fuzzySetsAux = this->fuzzySets;
     // while not in the end of the array, iterate
-    while (fuzzySetsAux != NULL)
-    {
+    while (fuzzySetsAux != NULL) {
         fuzzySetsAux->fuzzySet->reset();
         fuzzySetsAux = fuzzySetsAux->next;
     }
@@ -104,10 +90,8 @@ void FuzzyIO::resetFuzzySets()
 // PROTECTED METHODS
 
 // Method to recursively clean all FuzzySet from memory
-void FuzzyIO::cleanFuzzySets(fuzzySetArray *aux)
-{
-    if (aux != NULL)
-    {
+void FuzzyIO::cleanFuzzySets(fuzzySetArray *aux) {
+    if (aux != NULL) {
         this->cleanFuzzySets(aux->next);
         // emptying allocated memory
         delete aux;

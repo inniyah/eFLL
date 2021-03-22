@@ -21,8 +21,7 @@
 
 namespace eFLL {
 
-class FuzzyInput : public FuzzyIO
-{
+class FuzzyInput : public FuzzyIO {
 public:
   using SharedPointer = std::shared_ptr<FuzzyInput>;
   using WeakPointer = std::weak_ptr<FuzzyInput>;

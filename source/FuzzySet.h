@@ -20,8 +20,7 @@
 
 namespace eFLL {
 
-class FuzzySet
-{
+class FuzzySet {
 public:
   using SharedPointer = std::shared_ptr<FuzzySet>;
   using WeakPointer = std::weak_ptr<FuzzySet>;

@@ -129,7 +129,8 @@ cdef class FuzzyInput():
     def getCrispInput(self):
         return deref(self.thisptr).getCrispInput()
     def addFuzzySet(self, FuzzySet fuzzySet):
-        return deref(self.thisptr).addFuzzySet(fuzzySet.thisptr)
+        deref(self.thisptr).addFuzzySet(fuzzySet.thisptr)
+        return fuzzySet
     def resetFuzzySets(self):
         deref(self.thisptr).resetFuzzySets()
 
@@ -158,7 +159,8 @@ cdef class FuzzyOutput():
     def getCrispInput(self):
         return deref(self.thisptr).getCrispInput()
     def addFuzzySet(self, FuzzySet fuzzySet):
-        return deref(self.thisptr).addFuzzySet(fuzzySet.thisptr)
+        deref(self.thisptr).addFuzzySet(fuzzySet.thisptr)
+        return fuzzySet
     def resetFuzzySets(self):
         deref(self.thisptr).resetFuzzySets()
 
