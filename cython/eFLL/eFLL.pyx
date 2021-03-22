@@ -171,11 +171,14 @@ cdef class Fuzzy:
     def __dealloc__(self):
         self.thisptr.reset()
     def addFuzzyInput(self, FuzzyInput fuzzyInput):
-        return deref(self.thisptr).addFuzzyInput(fuzzyInput.thisptr)
+        deref(self.thisptr).addFuzzyInput(fuzzyInput.thisptr)
+        return fuzzyInput
     def addFuzzyOutput(self, FuzzyOutput fuzzyOutput):
-        return deref(self.thisptr).addFuzzyOutput(fuzzyOutput.thisptr)
+        deref(self.thisptr).addFuzzyOutput(fuzzyOutput.thisptr)
+        return fuzzyOutput
     def addFuzzyRule(self, FuzzyRule fuzzyRule):
-        return deref(self.thisptr).addFuzzyRule(fuzzyRule.thisptr)
+        deref(self.thisptr).addFuzzyRule(fuzzyRule.thisptr)
+        return fuzzyRule
     def setInput(self, int fuzzyInputIndex, float crispValue):
         return deref(self.thisptr).setInput(fuzzyInputIndex, crispValue)
     def fuzzify(self):

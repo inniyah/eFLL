@@ -54,9 +54,9 @@ public:
   ~Fuzzy();
 
   // PUBLIC METHODS
-  bool addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput);
-  bool addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput);
-  bool addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule);
+  FuzzyInput::SharedPointer &addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput);
+  FuzzyOutput::SharedPointer &addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput);
+  FuzzyRule::SharedPointer &addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule);
   bool setInput(int fuzzyInputIndex, float crispValue);
   bool fuzzify();
   bool isFiredRule(int fuzzyRuleIndex);

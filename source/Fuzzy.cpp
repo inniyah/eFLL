@@ -36,7 +36,7 @@ Fuzzy::~Fuzzy() {
 // PUBLIC METHODS
 
 // Method to include a new FuzzyInput into Fuzzy
-bool Fuzzy::addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput) {
+FuzzyInput::SharedPointer &Fuzzy::addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput) {
     // auxiliary variable to handle the operation
     fuzzyInputArray *newOne;
     // allocating in memory
@@ -55,16 +55,16 @@ bool Fuzzy::addFuzzyInput(FuzzyInput::SharedPointer &fuzzyInput) {
             if (aux->next == NULL) {
                 // make the ralations between them
                 aux->next = newOne;
-                return true;
+                return newOne->fuzzyInput;
             }
             aux = aux->next;
         }
     }
-    return true;
+    return newOne->fuzzyInput;
 }
 
 // Method to include a new FuzzyOutput into Fuzzy
-bool Fuzzy::addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput) {
+FuzzyOutput::SharedPointer &Fuzzy::addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput) {
     // auxiliary variable to handle the operation
     fuzzyOutputArray *newOne;
     // allocating in memory
@@ -85,16 +85,16 @@ bool Fuzzy::addFuzzyOutput(FuzzyOutput::SharedPointer &fuzzyOutput) {
             if (aux->next == NULL) {
                 // make the ralations between them
                 aux->next = newOne;
-                return true;
+                return newOne->fuzzyOutput;
             }
             aux = aux->next;
         }
     }
-    return true;
+    return newOne->fuzzyOutput;
 }
 
 // Method to include a new FuzzyRule into Fuzzy
-bool Fuzzy::addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule) {
+FuzzyRule::SharedPointer &Fuzzy::addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule) {
     // auxiliary variable to handle the operation
     fuzzyRuleArray *newOne;
     // allocating in memory
@@ -113,12 +113,12 @@ bool Fuzzy::addFuzzyRule(FuzzyRule::SharedPointer &fuzzyRule) {
             if (aux->next == NULL) {
                 // make the ralations between them
                 aux->next = newOne;
-                return true;
+                return newOne->fuzzyRule;
             }
             aux = aux->next;
         }
     }
-    return true;
+    return newOne->fuzzyRule;
 }
 
 // Method to set a crisp value to one FuzzyInput

@@ -22,64 +22,47 @@ int main(int argc, char *argv[])
   // FuzzyInput
   auto distance = std::make_shared<FuzzyInput>(1);
 
-  auto near = std::make_shared<FuzzySet>(0, 20, 20, 40);
-  distance->addFuzzySet(near);
-  auto safe = std::make_shared<FuzzySet>(30, 50, 50, 70);
-  distance->addFuzzySet(safe);
-  auto distant = std::make_shared<FuzzySet>(60, 80, 100, 100);
-  distance->addFuzzySet(distant);
+  auto near = distance->addFuzzySet(std::make_shared<FuzzySet>(0, 20, 20, 40));
+  auto safe = distance->addFuzzySet(std::make_shared<FuzzySet>(30, 50, 50, 70));
+  auto distant = distance->addFuzzySet(std::make_shared<FuzzySet>(60, 80, 100, 100));
 
   fuzzy->addFuzzyInput(distance);
 
   // FuzzyInput
   auto inputSpeed = std::make_shared<FuzzyInput>(2);
 
-  auto stopedInput = std::make_shared<FuzzySet>(0, 0, 0, 0);
-  inputSpeed->addFuzzySet(stopedInput);
-  auto slowInput = std::make_shared<FuzzySet>(1, 10, 10, 20);
-  inputSpeed->addFuzzySet(slowInput);
-  auto normalInput = std::make_shared<FuzzySet>(15, 30, 30, 50);
-  inputSpeed->addFuzzySet(normalInput);
-  auto quickInput = std::make_shared<FuzzySet>(45, 60, 70, 70);
-  inputSpeed->addFuzzySet(quickInput);
+  auto stopedInput = inputSpeed->addFuzzySet(std::make_shared<FuzzySet>(0, 0, 0, 0));
+  auto slowInput = inputSpeed->addFuzzySet(std::make_shared<FuzzySet>(1, 10, 10, 20));
+  auto normalInput = inputSpeed->addFuzzySet(std::make_shared<FuzzySet>(15, 30, 30, 50));
+  auto quickInput = inputSpeed->addFuzzySet(std::make_shared<FuzzySet>(45, 60, 70, 70));
 
   fuzzy->addFuzzyInput(inputSpeed);
 
   // FuzzyInput
   auto temperature = std::make_shared<FuzzyInput>(3);
 
-  auto cold = std::make_shared<FuzzySet>(-30, -30, -20, -10);
-  temperature->addFuzzySet(cold);
-  auto good = std::make_shared<FuzzySet>(-15, 0, 0, 15);
-  temperature->addFuzzySet(good);
-  auto hot = std::make_shared<FuzzySet>(10, 20, 30, 30);
-  temperature->addFuzzySet(hot);
+  auto cold = temperature->addFuzzySet(std::make_shared<FuzzySet>(-30, -30, -20, -10));
+  auto good = temperature->addFuzzySet(std::make_shared<FuzzySet>(-15, 0, 0, 15));
+  auto hot = temperature->addFuzzySet(std::make_shared<FuzzySet>(10, 20, 30, 30));
 
   fuzzy->addFuzzyInput(temperature);
 
   // FuzzyOutput
   auto risk = std::make_shared<FuzzyOutput>(1);
 
-  auto minimum = std::make_shared<FuzzySet>(0, 20, 20, 40);
-  risk->addFuzzySet(minimum);
-  auto average = std::make_shared<FuzzySet>(30, 50, 50, 70);
-  risk->addFuzzySet(average);
-  auto maximum = std::make_shared<FuzzySet>(60, 80, 80, 100);
-  risk->addFuzzySet(maximum);
+  auto minimum = risk->addFuzzySet(std::make_shared<FuzzySet>(0, 20, 20, 40));
+  auto average = risk->addFuzzySet(std::make_shared<FuzzySet>(30, 50, 50, 70));
+  auto maximum = risk->addFuzzySet(std::make_shared<FuzzySet>(60, 80, 80, 100));
 
   fuzzy->addFuzzyOutput(risk);
 
   // FuzzyOutput
   auto speedOutput = std::make_shared<FuzzyOutput>(2);
 
-  auto stopedOutput = std::make_shared<FuzzySet>(0, 0, 0, 0);
-  speedOutput->addFuzzySet(stopedOutput);
-  auto slowOutput = std::make_shared<FuzzySet>(1, 10, 10, 20);
-  speedOutput->addFuzzySet(slowOutput);
-  auto normalOutput = std::make_shared<FuzzySet>(15, 30, 30, 50);
-  speedOutput->addFuzzySet(normalOutput);
-  auto quickOutput = std::make_shared<FuzzySet>(45, 60, 70, 70);
-  speedOutput->addFuzzySet(quickOutput);
+  auto stopedOutput = speedOutput->addFuzzySet(std::make_shared<FuzzySet>(0, 0, 0, 0));
+  auto slowOutput = speedOutput->addFuzzySet(std::make_shared<FuzzySet>(1, 10, 10, 20));
+  auto normalOutput = speedOutput->addFuzzySet(std::make_shared<FuzzySet>(15, 30, 30, 50));
+  auto quickOutput = speedOutput->addFuzzySet(std::make_shared<FuzzySet>(45, 60, 70, 70));
 
   fuzzy->addFuzzyOutput(speedOutput);
 

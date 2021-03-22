@@ -102,9 +102,9 @@ cdef extern from "Fuzzy.h" namespace "eFLL" nogil:
     _Fuzzy() except +
     ctypedef shared_ptr[_Fuzzy] SharedPointer
     ctypedef weak_ptr[_Fuzzy] WeakPointer
-    bool addFuzzyInput(_FuzzyInput.SharedPointer &fuzzyInput)
-    bool addFuzzyOutput(_FuzzyOutput.SharedPointer &fuzzyOutput)
-    bool addFuzzyRule(_FuzzyRule.SharedPointer &fuzzyRule)
+    _FuzzyInput.SharedPointer &addFuzzyInput(_FuzzyInput.SharedPointer &fuzzyInput)
+    _FuzzyOutput.SharedPointer &addFuzzyOutput(_FuzzyOutput.SharedPointer &fuzzyOutput)
+    _FuzzyRule.SharedPointer &addFuzzyRule(_FuzzyRule.SharedPointer &fuzzyRule)
     bool setInput(int fuzzyInputIndex, float crispValue)
     bool fuzzify()
     bool isFiredRule(int fuzzyRuleIndex)
