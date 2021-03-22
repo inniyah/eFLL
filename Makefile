@@ -147,6 +147,7 @@ clean:
 	@find . -name '*.pyc' -exec $(RM) {} +
 	@find . -name '*.pyo' -exec $(RM) {} +
 	@find . -name '*.bak' -exec $(RM) {} +
+	@find . -name '*.bin' -exec $(RM) {} +
 	@find . -name '*~' -exec $(RM) {} +
 	@$(RM) core
 
